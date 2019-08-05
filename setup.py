@@ -14,7 +14,8 @@ with open('HISTORY.rst') as history_file:
 requirements = ['Click>=6.0',
                 'numpy>=1.14',
                 'scipy>=1.2',
-                'matplotlib>=3.0']
+                'matplotlib>=3.0',
+                'jupyter>=1.0']
 
 setup_requirements = []
 
