@@ -37,7 +37,7 @@ setup(
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
     ],
-    description="A Python implementation of the Longstaff-Schwartz linear regression algorithm for the evaluation of call rights an American options.",
+    description="A Python implementation of the Longstaff-Schwartz linear regression algorithm for the evaluation of call rights and American options.",
     entry_points={
         'console_scripts': [
             'longstaff_schwartz=longstaff_schwartz.cli:main',

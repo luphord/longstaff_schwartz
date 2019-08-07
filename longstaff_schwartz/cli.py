@@ -1,16 +1,14 @@
 # -*- coding: utf-8 -*-
 
-"""Console script for longstaff_schwartz."""
+'''Command Line Interface (CLI) for longstaff_schwartz.'''
 import sys
 import click
 
 
 @click.command()
 def main(args=None):
-    """Console script for longstaff_schwartz."""
-    click.echo("Replace this message by putting your code into "
-               "longstaff_schwartz.cli.main")
-    click.echo("See click documentation at http://click.pocoo.org/")
+    '''Command Line Interface (CLI) for longstaff_schwartz.'''
+    click.echo('No CLI functionality yet')
     return 0
 
 

@@ -16,7 +16,7 @@ Longstaff-Schwartz Algorithm
 
 
 
-A Python implementation of the Longstaff-Schwartz linear regression algorithm for the evaluation of call rights an American options.
+A Python implementation of the Longstaff-Schwartz linear regression algorithm for the evaluation of call rights and American options.
 
 
 * Free software: MIT license
