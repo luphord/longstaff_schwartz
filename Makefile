@@ -50,6 +50,9 @@ clean-test: ## remove test and coverage artifacts
 	rm -fr htmlcov/
 	rm -fr .pytest_cache
 
+type: ## run mypy type checks
+	mypy --config-file mypy.ini longstaff_schwartz tests
+
 lint: ## check style with flake8
 	flake8 longstaff_schwartz tests
 
