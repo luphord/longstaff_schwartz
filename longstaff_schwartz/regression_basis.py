@@ -15,14 +15,14 @@ class PolynomialRegressionFunction:
 
 
 class RegressionBasis:
-    def __init__(self, regression_functions):
-        self.regression_functions = regression_functions
+    def __init__(self, basis_functions):
+        self.basis_functions = basis_functions
 
     def __str__(self):
-        return ' + '.join(str(f) for f in self.regression_functions)
+        return ' + '.join(str(f) for f in self.basis_functions)
 
     def apply(self, x):
-        for f in self.regression_functions:
+        for f in self.basis_functions:
             yield f(x)
 
     def __call__(self, x):
