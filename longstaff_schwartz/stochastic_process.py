@@ -38,7 +38,7 @@ class GeometricBrownianMotion:
         dt = np.concatenate((t[0:1], np.diff(t)))
         assert (dt >= 0).all(), 'Increasing time vector required'
         # transposed simulation for automatic broadcasting
-        dW = (rnd.normal(size=(t.size, 1000)).T * np.sqrt(dt)).T
+        dW = (rnd.normal(size=(t.size, n)).T * np.sqrt(dt)).T
         W = np.cumsum(dW, axis=0)
         return np.exp(self.sigma * W.T + (self.mu - self.sigma**2 / 2) * t).T
 
