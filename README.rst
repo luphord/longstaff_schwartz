@@ -20,13 +20,10 @@ A Python implementation of the Longstaff-Schwartz linear regression algorithm fo
 
 
 * Free software: MIT license
+* Slides_
 * Documentation: https://longstaff-schwartz.readthedocs.io.
 
-
-Features
---------
-
-* TODO
+.. _Slides: https://raw.githack.com/luphord/longstaff_schwartz/master/talk/index.html
 
 Credits
 -------
