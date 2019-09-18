@@ -100,9 +100,9 @@ name: agenda
 ## Call Right Valuation in General
 - A Framework for Optimal Exercise Decisions and Call Right Valuation
 - Risk-Neutral Valuation with Monte Carlo
+- Exercise vs. Continuation Value
 - Perfect Foresight / Hindsight
 - Nested Simulation
-- Exercise vs. Continuation Value
 
 ## Longstaff-Schwartz Algorithm
 - Approximation of Continuation Value
@@ -222,6 +222,15 @@ Valuation happens by averaging payoffs over paths.
 
 ---
 
+# Exercise vs. Continuation Value
+
+![drawing](draw/exercise-or-continue.svg)
+
+Whenever the cashflow from exercising the put is larger than the continuation value, exercise is favourable.
+As it can only be exercised once, it would be exercised on the first favourable exercise date.
+
+---
+
 # Perfect Foresight / Hindsight
 
 ![drawing](draw/perfect-foresight.svg)
@@ -239,15 +248,6 @@ Valuation happens by averaging payoffs over paths.
 
 With nested simulation, a new set of independent paths has to simulated for each existing path from the call right onwards.
 The computational effort grows exponentially with the number of call rights.
-
----
-
-# Exercise vs. Continuation Value
-
-![drawing](draw/exercise-or-continue.svg)
-
-Whenever the cashflow from exercising the put is larger than the continuation value, exercise is favourable.
-As it can only be exercised once, it would be exercised on the first favourable exercise date.
 
 ---
 
