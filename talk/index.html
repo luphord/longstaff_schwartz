@@ -37,6 +37,10 @@
         margin-top: 100px;
       }
 
+      .offset2 {
+        margin-top: 30px;
+      }
+
       img[alt=qrcode] {
         max-height: 250px;
         height: auto;
@@ -86,19 +90,31 @@ name: agenda
 
 # Agenda
 
-- What is a Call / Cancel / Enter / Exercise Right?
-- A General Framework for Optimal Exercise Decisions and Call Right Valuation
-  - Payoff and Call Right Description
-  - Models
-  - Marketdata and Calibration
-  - Longstaff-Schwartz Algorithm
+<div class="offset2"></div>
+
+## What is a Call / Cancel / Enter / Exercise Right?
+- Callable Loan
+- American Put Option
+- Bermudan Swaption
+
+## Call Right Valuation in General
+- A Framework for Optimal Exercise Decisions and Call Right Valuation
+- Risk-Neutral Valuation with Monte Carlo
 - Perfect Foresight / Hindsight
 - Nested Simulation
 - Exercise vs. Continuation Value
+
+## Longstaff-Schwartz Algorithm
 - Approximation of Continuation Value
 - Polynomials in NumPy
-- Longstaff-Schwartz Algorithm
+- Longstaff-Schwartz Algorithm in Python
+- Approximation Steps
+- Exercise or Hold
 - Exercise Boundaries
+
+???
+
+- No formulas, many graphics
 
 ---
 
@@ -235,6 +251,12 @@ As it can only be exercised once, it would be exercised on the first favourable 
 
 ---
 
+# Approximation of Continuation Value
+
+![](img/continuation-value-approximation.svg)
+
+---
+
 # Polynomials in NumPy
 
 ```
@@ -260,13 +282,7 @@ plt.savefig('img/numpy-polynomials.svg')
 
 ---
 
-# Approximation of Continuation Value
-
-![](img/continuation-value-approximation.svg)
-
----
-
-# Longstaff-Schwartz Algorithm
+# Longstaff-Schwartz Algorithm in Python
 
 ```
 # given no prior exercise we just receive the payoff of a European option
