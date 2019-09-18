@@ -33,6 +33,14 @@
         width:auto;
       }
 
+      img[alt=small-img] {
+        margin-top: 30px;
+        max-width:49%;
+        max-height:400px;
+        height: auto;
+        width:auto;
+      }
+
       .offset {
         margin-top: 100px;
       }
@@ -134,6 +142,7 @@ The bank can decide after 10 years whether to cancel or continue the loan.
 - The bank hast to choose whether to cancel or continue the loan
 - If the bank cancels the loan, the remaining two thirds have to be repayed immediately
 - If the bank does not cancel the loan, amortization continues as before
+- This is example is easy to understand, but harder to implement; hence we use another example for implementation...
 
 ---
 
@@ -142,12 +151,17 @@ The bank can decide after 10 years whether to cancel or continue the loan.
 
 ![drawing](draw/american-option.svg)
 
-An American put option gives the holder the right to sell the underlying stock for the strike price on any given day until maturity.
+An American put option gives the holder the right to sell the underlying stock for the *strike price* on any given day until maturity.
+The payoff is
+```
+max(strike - spot, 0)
+```
+
 
 ???
 
 - There are many types of options, we focus on the simplest cases
-- An option is the right (but not the obligation) to buy or sell a stock at a given price
+- An option is the right (but not the obligation) to buy or sell a stock at a given **strike price**
 - An option to buy a stock is called a call, an option to sell is called a put
 - For so-called European style call/put options there is a fixed date (maturity) when the underlying stock can be bought/sold
 - For so-called American style call/put options, the holder may choose any date (but only once) until maturity when to exercise the option
@@ -170,6 +184,7 @@ A Bermudan swapation gives the holder the right to enter the underlying swap on 
 - A European style swaption specifies a single date when the holder may exercise it
 - A Bermudan style swaption specifies multiple dates when the holder may exercise it
 - The holder of a Bermudan style swaption has to decide on each exercise date whether to enter the swap or not
+- We have seen three examples for call rights; now I will provide an overview how to evaluate them
 
 ---
 
@@ -182,7 +197,7 @@ name:framework
 <hr/>
 Financial product description in serialized form (JSON, XML) and / or as an object model
 <hr/>
-Our approach: Procedural Python code for specific examples, no generalization
+Our approach: Python payoff code for an American Put, no generalization
 ]
 
 .column-4[
@@ -208,6 +223,11 @@ Computation or approximation of continuation values and optimal exercise decisio
 <hr/>
 Our approach: Use Longstaff-Schwartz
 ]
+
+???
+
+- Before moving to call right problems, some more words about risk-neutral valuation and Monte Carlo
+
 ---
 
 # Risk-Neutral Valuation
@@ -220,6 +240,15 @@ Independent realizations of a stochastic process are called paths.
 Each path can be seen as one possible future scenario. All paths are equally likely.
 Valuation happens by averaging payoffs over paths.
 
+???
+
+- With Monte Carlo method, model is simulated (sampled) many times
+- Independent realizations of a stochastic process are called paths
+- Each path can be seen as one possible future scenario
+- All paths are equally likely
+- Valuation happens by averaging payoffs over paths
+- We know now how to evaluate payoffs; how can we handle call rights?
+
 ---
 
 # Exercise vs. Continuation Value
@@ -229,6 +258,33 @@ Valuation happens by averaging payoffs over paths.
 Whenever the cashflow from exercising the put is larger than the continuation value, exercise is favourable.
 As it can only be exercised once, it would be exercised on the first favourable exercise date.
 
+???
+
+- To evaluate call rights, we have to compare two values:
+- Exercise value and continuation value
+- Exercise value is the cashflow we receive on exercising the option
+- Continuation value is the value of the option if we do not exercise
+- When exercise value is larger than continuation value we exercise, otherwise we don't
+- How do we get exercise and continuation value?
+- One is simple, the other one is hard
+
+---
+
+# Exercise Value
+
+![small-img](img/monte-carlo.svg)
+![small-img](img/exercise-value.svg)
+
+Obtaining the exercise value is simple: just plug the underlying value (stock price) into the payoff function.
+
+???
+
+- On the left is the simulated stock price
+- We simply plug the call price into the payoff formulate of the Put option and get the exercise value
+- On the right we see the exercise value for all paths and timesteps
+- We have to an approximation: we cannot simulate continuously in time, but only for discrete time steps
+- Exercise value is simple, but how do we get continuation value?
+
 ---
 
 # Perfect Foresight / Hindsight
@@ -237,8 +293,10 @@ As it can only be exercised once, it would be exercised on the first favourable 
 
 ???
 
+- Let's first discuss an approach that does not work
 - Can we simply use the future underlying values on a path to estimate the local continuation value?
-- No, we would be looking into the future; we would over-estimate the options value 
+- No, we would be looking into the future; we would over-estimate the options value
+- Instead of the future values on the path we would need the **conditional expectation** given where we are
 
 ---
 
@@ -249,17 +307,37 @@ As it can only be exercised once, it would be exercised on the first favourable 
 With nested simulation, a new set of independent paths has to simulated for each existing path from the call right onwards.
 The computational effort grows exponentially with the number of call rights.
 
+???
+
+- Let's try it with brute force:
+- For every path we perform a new set of simulations from the call right onwards
+- This approach is called nested simulation because we nest one simulation into another
+- This approach gives the correct result...
+- ...but the computational effort **grows exponentially** with more call rights
+
 ---
 
 # Approximation of Continuation Value
 
 ![](img/continuation-value-cashflows.svg)
 
+???
+
+- Let's try to approximate the continuation value
+
 ---
 
 # Approximation of Continuation Value
 
 ![](img/continuation-value-approximation.svg)
+
+???
+
+- Notice that we neither extrapolate nor interpolate with the fitted polynomial
+- We only apply the fitted curve at points we used in the regression (in sample)
+- We want to **smooth out the idioyncratic** information of each path...
+- ...so that we do not use future information anymore
+- This is a polynomial curve fitting problem and numpy gives us a nice tool to handle it...
 
 ---
 
@@ -286,11 +364,16 @@ plt.gca().set_position([0.08, 0.08, 0.9, 0.9])
 plt.savefig('img/numpy-polynomials.svg')
 ```
 
+- We now have all the tools and prerequsites to do the algorithm
+
 ---
 
 # Longstaff-Schwartz Algorithm in Python
 
 ```
+def exercise_value(s):
+    return np.maximum(1.1 - s, 0)
+
 # given no prior exercise we just receive the payoff of a European option
 cashflow = exercise_value(X[-1, :])
 # iterating backwards in time 
@@ -314,6 +397,14 @@ for i in reversed(range(1, X.shape[0] - 1)):
     cashflow[ex_idx] = exercise[ex_idx]
 ```
 
+???
+
+- `exercise_value` is the function that gives us the payoff when we exercise
+- We initialize the cashflow array with the payoff at maturity (at the last time step)
+- Then we work backwards in a loop
+- In the end we have the cashflow at the first time step with an exercise right; we now only need to discount to today and average
+- Let's look at the data this algorithm generates...
+
 ---
 
 # Approximated Continuation and Exercise Value I
@@ -332,6 +423,11 @@ for i in reversed(range(1, X.shape[0] - 1)):
 
 ![](img/approximated-continuation-and-exercise-value-2.svg)
 
+???
+
+- Closer to now we see no favourable exercises at all
+- Let's now see when the algorithm recommends us to exercise...
+
 ---
 
 # Exercise or Hold
@@ -348,8 +444,12 @@ for i in reversed(range(1, X.shape[0] - 1)):
 
 # Exercise Boundary
 
-
 ![](img/fitted-exercise-boundary.svg)
+
+???
+
+- I have tried to fit a curve as a simple exercise boundary, but the results do not look promising
+- We are approaching the end, just a few words about generalization of the code...
 
 ---
 
@@ -357,6 +457,7 @@ for i in reversed(range(1, X.shape[0] - 1)):
 
 - Sometimes there is no concept of "in-the-money" paths; if exercise might be favourable on all paths, regression should be performed on all paths
 - If the payoff depends on more than a single state variable, regression should be performed on basis functions of all state variables (and their interactions to a limited degree)
+- If the payoff us path-dependent (non-Markovian), we have to evaluate the exercise/payoff function on the entire path up to the current time step
 
 ---
 
@@ -372,6 +473,10 @@ https://github.com/luphord/longstaff_schwartz
 
 
 ![qrcode](img/qrcode.png)
+
+???
+
+- Before moving to Q&A, a few words on the original paper
 
     </textarea>
     <script src="https://remarkjs.com/downloads/remark-latest.min.js">
