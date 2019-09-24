@@ -18,11 +18,13 @@ Longstaff-Schwartz Algorithm
 
 A Python implementation of the Longstaff-Schwartz linear regression algorithm for the evaluation of call rights and American options.
 
-
-* Slides_
-* `Jupyter Notebook`_
 * Documentation: https://longstaff-schwartz.readthedocs.io
 * Free software: MIT license
+
+Talks
+-----
+
+* PyData Meetup 2019-09-18: Slides_, `Jupyter Notebook`_
 
 .. _Slides: https://raw.githack.com/luphord/longstaff_schwartz/master/talk/index.html
 .. _`Jupyter Notebook`: https://github.com/luphord/longstaff_schwartz/blob/master/notebooks/Talk.ipynb
