@@ -26,8 +26,8 @@ Talks
 
 * PyData Meetup 2019-09-18: Slides_, `Jupyter Notebook`_
 
-.. _Slides: https://raw.githack.com/luphord/longstaff_schwartz/master/talk/index.html
-.. _`Jupyter Notebook`: https://github.com/luphord/longstaff_schwartz/blob/master/notebooks/Talk.ipynb
+.. _Slides: https://raw.githack.com/luphord/longstaff_schwartz/master/talks/talk_meetup_2019-09-18/index.html
+.. _`Jupyter Notebook`: https://github.com/luphord/longstaff_schwartz/blob/master/talks/talk_meetup_2019-09-18/Notebook_Meetup_2019-09-18.ipynb
 
 Credits
 -------
