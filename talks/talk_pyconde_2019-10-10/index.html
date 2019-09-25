@@ -103,8 +103,7 @@ name: agenda
 ## What is a Call / Cancel / Enter / Exercise Right?
 - American Put Option
 
-## Call Right Valuation in General
-- A Framework for Optimal Exercise Decisions and Call Right Valuation
+## Valuation by Simulation
 - Risk-Neutral Valuation with Monte Carlo
 - Exercise vs. Continuation Value
 - Perfect Foresight / Hindsight
@@ -116,7 +115,10 @@ name: agenda
 - Longstaff-Schwartz Algorithm in Python
 - Approximation Steps
 - Exercise or Hold
-- Exercise Boundaries
+
+## Beyond Examples
+- More Complex Call Rights and Payoffs
+- A Framework for Optimal Exercise Decisions and Call Right Valuation
 
 ???
 
@@ -144,48 +146,6 @@ max(strike - spot, 0)
 - For so-called European style call/put options there is a fixed date (maturity) when the underlying stock can be bought/sold
 - For so-called American style call/put options, the holder may choose any date (but only once) until maturity when to exercise the option
 - The holder of an American option has to decide every day whether to exercise their option or to hold it
-
----
-
-name:framework
-
-# A General Framework for Optimal Exercise Decisions and Call Right Valuation
-
-.column-4[
-#### Payoff and Call Right Description
-<hr/>
-Financial product description in serialized form (JSON, XML) and / or as an object model
-<hr/>
-Our approach: Python payoff code for an American Put, no generalization
-]
-
-.column-4[
-#### Risk-Neutral Valuation Model
-<hr/>
-Arbitrage-free replication model and pricing technique (analytical, PDE solving, Monte Carlo, ...)
-<hr/>
-Our approach: Monte Carlo pricing in a Black-Scholes model
-]
-
-.column-4[
-#### Marketdata and Calibration
-<hr/>
-Fit model parameters to market quotes (forward curves, implied volatilities, ...)
-<hr/>
-Our approach: Freely choose model parameters
-]
-
-.column-4[
-#### Exercise Algorithm
-<hr/>
-Computation or approximation of continuation values and optimal exercise decisions
-<hr/>
-Our approach: Use Longstaff-Schwartz
-]
-
-???
-
-- Before moving to call right problems, some more words about risk-neutral valuation and Monte Carlo
 
 ---
 
@@ -414,6 +374,44 @@ for i in reversed(range(1, X.shape[0] - 1)):
 - Sometimes there is no concept of "in-the-money" paths; if exercise might be favourable on all paths, regression should be performed on all paths
 - If the payoff depends on more than a single state variable, regression should be performed on basis functions of all state variables (and their interactions to a limited degree)
 - If the payoff us path-dependent (non-Markovian), we have to evaluate the exercise/payoff function on the entire path up to the current time step
+
+---
+
+name:framework
+
+# A General Framework for Optimal Exercise Decisions and Call Right Valuation
+
+.column-4[
+#### Payoff and Call Right Description
+<hr/>
+Financial product description in serialized form (JSON, XML) and / or as an object model
+<hr/>
+Our approach: Python payoff code for an American Put, no generalization
+]
+
+.column-4[
+#### Risk-Neutral Valuation Model
+<hr/>
+Arbitrage-free replication model and pricing technique (analytical, PDE solving, Monte Carlo, ...)
+<hr/>
+Our approach: Monte Carlo pricing in a Black-Scholes model
+]
+
+.column-4[
+#### Marketdata and Calibration
+<hr/>
+Fit model parameters to market quotes (forward curves, implied volatilities, ...)
+<hr/>
+Our approach: Freely choose model parameters
+]
+
+.column-4[
+#### Exercise Algorithm
+<hr/>
+Computation or approximation of continuation values and optimal exercise decisions
+<hr/>
+Our approach: Use Longstaff-Schwartz
+]
 
 ---
 
