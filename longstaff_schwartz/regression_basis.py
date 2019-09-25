@@ -1,17 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import numpy as np
-
-
-class PolynomialRegressionFunction:
-    def __init__(self, exponent):
-        self.exponent = exponent
-
-    def __str__(self):
-        return f'x**{self.exponent}'
-
-    def __call__(self, x):
-        return x ** self.exponent
+from numpy.linalg import lstsq
 
 
 class RegressionBasis:
@@ -29,6 +19,30 @@ class RegressionBasis:
         assert x.ndim == 1
         x = x.reshape((x.shape[0], 1))
         return np.concatenate(tuple(self.apply(x)), axis=1)
+
+    def fit(self, x, y):
+        beta, *_ = lstsq(self(x), y, rcond=None)
+        return FittedFunction(self, beta)
+
+
+class FittedFunction:
+    def __init__(self, basis, beta):
+        self.basis = basis
+        self.beta = beta
+
+    def __call__(self, x):
+        return self.basis(x) @ self.beta
+
+
+class PolynomialRegressionFunction:
+    def __init__(self, exponent):
+        self.exponent = exponent
+
+    def __str__(self):
+        return f'x**{self.exponent}'
+
+    def __call__(self, x):
+        return x ** self.exponent
 
 
 class PolynomialRegressionBasis(RegressionBasis):
