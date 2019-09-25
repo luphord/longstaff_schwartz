@@ -22,16 +22,22 @@ class RegressionBasis:
 
     def fit(self, x, y):
         beta, *_ = lstsq(self(x), y, rcond=None)
-        return FittedFunction(self, beta)
+        return FittedFunction(self, beta, (x.min(), x.max()))
 
 
 class FittedFunction:
-    def __init__(self, basis, beta):
+    def __init__(self, basis, beta, domain):
         self.basis = basis
         self.beta = beta
+        self.domain = domain
 
     def __call__(self, x):
         return self.basis(x) @ self.beta
+
+    def linspace(self, n=100, domain=None):
+        domain = domain or self.domain
+        x = np.linspace(domain[0], domain[1], n)
+        return x, self(x)
 
 
 class PolynomialRegressionFunction:
