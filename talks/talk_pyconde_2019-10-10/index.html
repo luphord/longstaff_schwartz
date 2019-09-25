@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Should I stay or should I go?</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Lato'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+        margin: 0px;
+      }
+      .remark-slide-content h1 {
+        font-size: 45px;
+      }
+      .remark-slide-content h2 {
+        font-size: 35px;
+      }
+      .remark-slide-content h3 {
+        font-size: 25px;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+
+      img[alt=drawing] {
+        margin-top: 30px;
+        max-width:100%;
+        max-height:400px;
+        height: auto;
+        width:auto;
+      }
+
+      img[alt=small-img] {
+        margin-top: 30px;
+        max-width:49%;
+        max-height:400px;
+        height: auto;
+        width:auto;
+      }
+
+      .offset {
+        margin-top: 100px;
+      }
+
+      .offset2 {
+        margin-top: 30px;
+      }
+
+      img[alt=qrcode] {
+        max-height: 250px;
+        height: auto;
+        width:auto;
+      }
+	  
+	  .inverse {
+        background: #272822;
+        color: #777872;
+        text-shadow: 0 0 20px #333;
+      }
+      .inverse h1, .inverse h2 {
+        color: #f3f3f3;
+        line-height: 0.8em;
+        margin: 20px;
+      }
+	  
+	  /* Four columns */
+      .column-4 {
+		background-color: #f3f3f3; 
+        width: 20%;
+        float: left;
+        padding: 0.5em;
+		margin: 0.5em;
+      }
+	  
+	  .column-4 hr {
+		border: 1px dashed #ddd;
+	  }
+	  
+	  #slide-framework {
+		font-size: 18px;
+	  }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+name: title
+class: center, middle, inverse
+
+# Should I stay or should I go?
+## Optimal Exercise Decisions using the Longstaff-Schwartz Algorithm
+
+---
+name: agenda
+
+# Agenda
+
+<div class="offset2"></div>
+
+## What is a Call / Cancel / Enter / Exercise Right?
+- American Put Option
+
+## Call Right Valuation in General
+- A Framework for Optimal Exercise Decisions and Call Right Valuation
+- Risk-Neutral Valuation with Monte Carlo
+- Exercise vs. Continuation Value
+- Perfect Foresight / Hindsight
+- Nested Simulation
+
+## Longstaff-Schwartz Algorithm
+- Approximation of Continuation Value
+- Polynomials in NumPy
+- Longstaff-Schwartz Algorithm in Python
+- Approximation Steps
+- Exercise or Hold
+- Exercise Boundaries
+
+???
+
+- No formulas, many graphics
+
+---
+
+# What is a Call / Cancel / Enter / Exercise Right?
+## Example: American Put Option
+
+![drawing](draw/american-option.svg)
+
+An American put option gives the holder the right to sell the underlying stock for the *strike price* on any given day until maturity.
+The payoff is
+```
+max(strike - spot, 0)
+```
+
+
+???
+
+- There are many types of options, we focus on the simplest cases
+- An option is the right (but not the obligation) to buy or sell a stock at a given **strike price**
+- An option to buy a stock is called a call, an option to sell is called a put
+- For so-called European style call/put options there is a fixed date (maturity) when the underlying stock can be bought/sold
+- For so-called American style call/put options, the holder may choose any date (but only once) until maturity when to exercise the option
+- The holder of an American option has to decide every day whether to exercise their option or to hold it
+
+---
+
+name:framework
+
+# A General Framework for Optimal Exercise Decisions and Call Right Valuation
+
+.column-4[
+#### Payoff and Call Right Description
+<hr/>
+Financial product description in serialized form (JSON, XML) and / or as an object model
+<hr/>
+Our approach: Python payoff code for an American Put, no generalization
+]
+
+.column-4[
+#### Risk-Neutral Valuation Model
+<hr/>
+Arbitrage-free replication model and pricing technique (analytical, PDE solving, Monte Carlo, ...)
+<hr/>
+Our approach: Monte Carlo pricing in a Black-Scholes model
+]
+
+.column-4[
+#### Marketdata and Calibration
+<hr/>
+Fit model parameters to market quotes (forward curves, implied volatilities, ...)
+<hr/>
+Our approach: Freely choose model parameters
+]
+
+.column-4[
+#### Exercise Algorithm
+<hr/>
+Computation or approximation of continuation values and optimal exercise decisions
+<hr/>
+Our approach: Use Longstaff-Schwartz
+]
+
+???
+
+- Before moving to call right problems, some more words about risk-neutral valuation and Monte Carlo
+
+---
+
+# Risk-Neutral Valuation
+## Monte Carlo Method
+
+![drawing](draw/monte-carlo.svg)
+
+When using the Monte Carlo method, the model is simulated (sampled) many times.
+Independent realizations of a stochastic process are called paths.
+Each path can be seen as one possible future scenario. All paths are equally likely.
+Valuation happens by averaging payoffs over paths.
+
+???
+
+- With Monte Carlo method, model is simulated (sampled) many times
+- Independent realizations of a stochastic process are called paths
+- Each path can be seen as one possible future scenario
+- All paths are equally likely
+- Valuation happens by averaging payoffs over paths
+- We know now how to evaluate payoffs; how can we handle call rights?
+
+---
+
+# Exercise vs. Continuation Value
+
+![drawing](draw/exercise-or-continue.svg)
+
+Whenever the cashflow from exercising the put is larger than the continuation value, exercise is favourable.
+As it can only be exercised once, it would be exercised on the first favourable exercise date.
+
+???
+
+- To evaluate call rights, we have to compare two values:
+- Exercise value and continuation value
+- Exercise value is the cashflow we receive on exercising the option
+- Continuation value is the value of the option if we do not exercise
+- When exercise value is larger than continuation value we exercise, otherwise we don't
+- How do we get exercise and continuation value?
+- One is simple, the other one is hard
+
+---
+
+# Exercise Value
+
+![small-img](img/monte-carlo.svg)
+![small-img](img/exercise-value.svg)
+
+Obtaining the exercise value is simple: just plug the underlying value (stock price) into the payoff function.
+
+???
+
+- On the left is the simulated stock price
+- We simply plug the call price into the payoff formulate of the Put option and get the exercise value
+- On the right we see the exercise value for all paths and timesteps
+- We have to an approximation: we cannot simulate continuously in time, but only for discrete time steps
+- Exercise value is simple, but how do we get continuation value?
+
+---
+
+# Perfect Foresight / Hindsight
+
+![drawing](draw/perfect-foresight.svg)
+
+???
+
+- Let's first discuss an approach that does not work
+- Can we simply use the future underlying values on a path to estimate the local continuation value?
+- No, we would be looking into the future; we would over-estimate the options value
+- Instead of the future values on the path we would need the **conditional expectation** given where we are
+
+---
+
+# Nested Simulation
+
+![drawing](draw/nested-simulation.svg)
+
+With nested simulation, a new set of independent paths has to simulated for each existing path from the call right onwards.
+The computational effort grows exponentially with the number of call rights.
+
+???
+
+- Let's try it with brute force:
+- For every path we perform a new set of simulations from the call right onwards
+- This approach is called nested simulation because we nest one simulation into another
+- This approach gives the correct result...
+- ...but the computational effort **grows exponentially** with more call rights
+
+---
+
+# Approximation of Continuation Value
+
+![](img/continuation-value-cashflows.svg)
+
+???
+
+- Let's try to approximate the continuation value
+
+---
+
+# Approximation of Continuation Value
+
+![](img/continuation-value-approximation.svg)
+
+???
+
+- Notice that we neither extrapolate nor interpolate with the fitted polynomial
+- We only apply the fitted curve at points we used in the regression (in sample)
+- We want to **smooth out the idioyncratic** information of each path...
+- ...so that we do not use future information anymore
+- This is a polynomial curve fitting problem and numpy gives us a nice tool to handle it...
+
+---
+
+# Polynomials in NumPy
+
+```
+import numpy as np
+from numpy.polynomial import Polynomial
+import matplotlib.pyplot as plt
+
+x = np.array([0., 1., 2., 3., 4., 5., 6., 7., 8., 9., 10.])
+y = np.array([0., -1., -1.4, -1.6, -1.2, -0.5, 0.9, 1.6, 2.1, 2.2, 2.3])
+p = Polynomial.fit(x, y, 4)
+
+plt.figure(figsize=[6, 3]); plt.plot(*p.linspace(), '-'); plt.plot(x, y, '+');
+```
+
+![](img/numpy-polynomials.svg)
+
+???
+
+```
+plt.gca().set_position([0.08, 0.08, 0.9, 0.9])
+plt.savefig('img/numpy-polynomials.svg')
+```
+
+- We now have all the tools and prerequsites to do the algorithm
+
+---
+
+# Longstaff-Schwartz Algorithm in Python
+
+```
+def exercise_value(s):
+    return np.maximum(1.1 - s, 0)
+
+# given no prior exercise we just receive the payoff of a European option
+cashflow = exercise_value(X[-1, :])
+# iterating backwards in time 
+for i in reversed(range(1, X.shape[0] - 1)):
+    # discount factor between t[i] and t[i+1]
+    df = np.exp(-r * (t[i+1]-t[i]))
+    # discount cashflows from next period
+    cashflow = cashflow * df
+    x = X[i, :]
+    # boolean index of all in-the-money paths
+    itm = exercise_value(x) > 0
+    # fit polynomial of degree 2
+    fitted = Polynomial.fit(x[itm], cashflow[itm], 2)
+    # approximate continuation value
+    continuation = fitted(x)
+    # exercise value for time t[i]
+    exercise = exercise_value(x)
+    # boolean index where exercise is beneficial
+    ex_idx = itm & (exercise > continuation)
+    # update cashflows with early exercises
+    cashflow[ex_idx] = exercise[ex_idx]
+```
+
+???
+
+- `exercise_value` is the function that gives us the payoff when we exercise
+- We initialize the cashflow array with the payoff at maturity (at the last time step)
+- Then we work backwards in a loop
+- In the end we have the cashflow at the first time step with an exercise right; we now only need to discount to today and average
+- Let's look at the data this algorithm generates...
+
+---
+
+# Approximated Continuation and Exercise Value I
+
+![](img/approximated-continuation-and-exercise-value-0.svg)
+
+---
+
+# Approximated Continuation and Exercise Value II
+
+![](img/approximated-continuation-and-exercise-value-1.svg)
+
+---
+
+# Approximated Continuation and Exercise Value III
+
+![](img/approximated-continuation-and-exercise-value-2.svg)
+
+???
+
+- Closer to now we see no favourable exercises at all
+- Let's now see when the algorithm recommends us to exercise...
+
+---
+
+# Exercise or Hold
+
+![](img/exercise-or-hold.svg)
+
+---
+
+# First Favourable Exercise
+
+![](img/first-exercises.svg)
+
+---
+
+# Exercise Boundary
+
+![](img/fitted-exercise-boundary.svg)
+
+???
+
+- I have tried to fit a curve as a simple exercise boundary, but the results do not look promising
+- We are approaching the end, just a few words about generalization of the code...
+
+---
+
+# More Complex Call Rights
+
+- Sometimes there is no concept of "in-the-money" paths; if exercise might be favourable on all paths, regression should be performed on all paths
+- If the payoff depends on more than a single state variable, regression should be performed on basis functions of all state variables (and their interactions to a limited degree)
+- If the payoff us path-dependent (non-Markovian), we have to evaluate the exercise/payoff function on the entire path up to the current time step
+
+---
+
+# Source
+
+**Francis A. Longstaff, Eduardo S. Schwartz**, *Valuing American Options by Simulation: A Simple Least-Squares Approach* (The Review of Financial Studies) (2001) Vol 14, No 1, pp. 113-147.
+
+<div class="offset"></div>
+
+# Slides and Jupyter Notebook
+
+https://github.com/luphord/longstaff_schwartz
+
+
+![qrcode](img/qrcode.png)
+
+???
+
+- Before moving to Q&A, a few words on the original paper
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create({
+		ratio: '4:3',
+		highlightStyle: 'agate',
+		highlightLanguage: 'python',
+		highlightLines: true
+	  });
+    </script>
+  </body>
+</html>
