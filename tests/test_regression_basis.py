@@ -32,3 +32,5 @@ class TestRegressionBasis(unittest.TestCase):
         rx, ry = r.linspace(123, [-1, 1])
         self.assertTrue(np.allclose(px, rx))
         self.assertTrue(np.allclose(py, ry))
+        coef = p.convert(domain=[-1, 1]).coef
+        self.assertTrue(np.allclose(coef, r.beta))
