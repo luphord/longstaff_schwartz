@@ -29,10 +29,10 @@ Talks
 .. _Slides: https://raw.githack.com/luphord/longstaff_schwartz/master/talks/talk_meetup_2019-09-18/index.html
 .. _`Jupyter Notebook`: https://github.com/luphord/longstaff_schwartz/blob/master/talks/talk_meetup_2019-09-18/Notebook_Meetup_2019-09-18.ipynb
 
-* PyConDE 2019-10-10: Slides_, `Jupyter Notebook`_
+* PyConDE 2019-10-10: Slides2_, `Jupyter Notebook2`_
 
-.. _Slides: https://raw.githack.com/luphord/longstaff_schwartz/master/talks/talk_pyconde_2019-10-10/index.html
-.. _`Jupyter Notebook`: https://github.com/luphord/longstaff_schwartz/blob/master/talks/talk_pyconde_2019-10-10/Notebook_PyConDE_2019-10-10.ipynb
+.. _Slides2: https://raw.githack.com/luphord/longstaff_schwartz/master/talks/talk_pyconde_2019-10-10/index.html
+.. _`Jupyter Notebook2`: https://github.com/luphord/longstaff_schwartz/blob/master/talks/talk_pyconde_2019-10-10/Notebook_PyConDE_2019-10-10.ipynb
 
 
 Credits
