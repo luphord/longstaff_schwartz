@@ -8,11 +8,13 @@ import unittest
 from click.testing import CliRunner
 
 import numpy as np
+from numpy.polynomial import Polynomial
 
 from longstaff_schwartz import cli
 from longstaff_schwartz.algorithm import \
     longstaff_schwartz_american_option_quadratic, \
-    ls_american_option_quadratic_iter
+    ls_american_option_quadratic_iter, \
+    longstaff_schwartz
 
 
 # Test values from chapter 1, Numerical Example
@@ -31,6 +33,22 @@ r = 0.06
 strike = 1.1
 coef2 = np.array([-1.070, 2.983, -1.814])  # -1.813 in paper
 coef1 = np.array([2.038, -3.335, 1.356])
+
+
+# functions to plug into general algorithm to arrive at
+# original paper special case examples
+
+
+def american_put_payoff(spot):
+    return np.maximum(strike - spot, 0.0)
+
+
+def constant_rate_df(t_from, t_to):
+    return np.exp(-r * (t_to - t_from))
+
+
+def fit_quadratic(x, y):
+    return Polynomial.fit(x, y, 2)
 
 
 class TestLongstaff_schwartz(unittest.TestCase):
@@ -61,3 +79,13 @@ class TestLongstaff_schwartz(unittest.TestCase):
         cashflow, x, fitted, continuation, exercise, ex_idx = intermediate[1]
         fitted_coef1 = np.round(fitted.convert(domain=[-1, 1]).coef, 3)
         self.assertTrue(np.allclose(coef1, fitted_coef1))
+
+    def test_longstaff_schwartz_paper_example_for_general_algorithm(self):
+        '''Test general algorithm against example value
+           of original Longstaff-Schwartz paper'''
+        value = longstaff_schwartz(X, t, constant_rate_df, fit_quadratic,
+                                   american_put_payoff)
+        self.assertEqual(0.1144, np.round(value, 4))
+        df = np.exp(-r * (t[-1] - t[0]))
+        european_value = american_put_payoff(X[-1, :]).mean() * df
+        self.assertEqual(0.0564, np.round(european_value, 4))
