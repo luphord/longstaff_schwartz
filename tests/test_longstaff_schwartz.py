@@ -11,12 +11,12 @@ import numpy as np
 
 from longstaff_schwartz import cli
 from longstaff_schwartz.algorithm import \
-    longstaff_schwartz_american_option_quadratic
+    longstaff_schwartz_american_option_quadratic, \
+    ls_american_option_quadratic_iter
 
 
 # Test values from chapter 1, Numerical Example
 # of originial Longstaff-Schwartz paper
-
 X = np.array([
     [1.00, 1.09, 1.08, 1.34],
     [1.00, 1.16, 1.26, 1.54],
@@ -26,12 +26,11 @@ X = np.array([
     [1.00, 0.76, 0.77, 0.90],
     [1.00, 0.92, 0.84, 1.01],
     [1.00, 0.88, 1.22, 1.34]]).T
-
 t = np.array([0, 1, 2, 3])
-
 r = 0.06
-
 strike = 1.1
+coef2 = np.array([-1.070, 2.983, -1.814])  # -1.813 in paper
+coef1 = np.array([2.038, -3.335, 1.356])
 
 
 class TestLongstaff_schwartz(unittest.TestCase):
@@ -53,3 +52,12 @@ class TestLongstaff_schwartz(unittest.TestCase):
         df = np.exp(-r * (t[-1] - t[0]))
         european_value = np.maximum(strike - X[-1, :], 0.0).mean() * df
         self.assertEqual(0.0564, np.round(european_value, 4))
+
+    def test_longstaff_schwartz_paper_example_intermediate_values(self):
+        intermediate = list(ls_american_option_quadratic_iter(X, t, r, strike))
+        cashflow, x, fitted, continuation, exercise, ex_idx = intermediate[0]
+        fitted_coef2 = np.round(fitted.convert(domain=[-1, 1]).coef, 3)
+        self.assertTrue(np.allclose(coef2, fitted_coef2))
+        cashflow, x, fitted, continuation, exercise, ex_idx = intermediate[1]
+        fitted_coef1 = np.round(fitted.convert(domain=[-1, 1]).coef, 3)
+        self.assertTrue(np.allclose(coef1, fitted_coef1))
