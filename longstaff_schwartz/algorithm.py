@@ -2,6 +2,37 @@ import numpy as np
 from numpy.polynomial import Polynomial
 
 
+def longstaff_schwartz_iter(X, t, df, fit, exercise_payoff):
+    # given no prior exercise we just receive the final payoff
+    cashflow = exercise_payoff(X[-1, :])
+    # iterating backwards in time
+    for i in reversed(range(1, X.shape[0] - 1)):
+        # discount cashflows from next period
+        cashflow = cashflow * df(t[i], t[i+1])
+        x = X[i, :]
+        # exercise value for time t[i]
+        exercise = exercise_payoff(x)
+        # boolean index of all in-the-money paths
+        itm = exercise > 0
+        # fit curve
+        fitted = fit(x[itm], cashflow[itm])
+        # approximate continuation value
+        continuation = fitted(x)
+        # boolean index where exercise is beneficial
+        ex_idx = itm & (exercise > continuation)
+        # update cashflows with early exercises
+        cashflow[ex_idx] = exercise[ex_idx]
+
+        yield cashflow, x, fitted, continuation, exercise, ex_idx
+
+
+def longstaff_schwartz(X, t, df, fit, exercise_payoff):
+    for cashflow, *_ in longstaff_schwartz_iter(X, t, df, fit,
+                                                exercise_payoff):
+        pass
+    return cashflow.mean(axis=0) * df(t[0], t[1])
+
+
 def ls_american_option_quadratic_iter(X, t, r, strike):
     # given no prior exercise we just receive the payoff of a European option
     cashflow = np.maximum(strike - X[-1, :], 0.0)
