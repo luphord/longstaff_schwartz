@@ -47,7 +47,7 @@ class BinomialModel:
         while len(v) > 1:
             v = df * (v[1:]*q + v[:-1]*(1-q))
             s = df * (s[1:]*q + s[:-1]*(1-q))
-            v = np.maximum(v, s)
+            v = np.maximum(v, payoff(s))
         return v[0]
 
 
