@@ -71,3 +71,17 @@ class TestBinomial(unittest.TestCase):
         payoff = call_payoff(strike)(mdl.ST)
         self.assertTrue(np.allclose(expected_payoff, payoff))
         self.assertTrue(np.allclose(0.6, mdl.q))
+
+    def test_put_call_parity(self):
+        expected = []
+        actual = []
+        for sigma in [0.05, 0.1, 0.2]:
+            for r in [-0.02, 0.0, 0.01, 0.1]:
+                for S0 in [50, 100, 5000]:
+                    mdl = create_binomial_model(0.1, 0.02, 100, 1, n=100)
+                    for strike in [80, 90, 100, 110, 120]:
+                        expected.append(mdl.S0 -
+                                        strike * np.exp(-mdl.r * mdl.T))
+                        actual.append(european_call_price(mdl, strike) -
+                                      european_put_price(mdl, strike))
+        self.assertTrue(np.allclose(expected, actual))
