@@ -113,3 +113,18 @@ class TestBinomial(unittest.TestCase):
         self.assertTrue((aamerican > aeuropean).all())
         # test for some "real" difference, threshold 1.23 is rather arbitrary
         self.assertGreater((aamerican - aeuropean).max(), 1.23)
+
+    def test_ucsd_example(self):
+        '''Test American put example data found in
+           https://www.math.ucsd.edu/~p1tong/ProgramForFun/
+           Binomial%20Tree%20model%20for%20an%20American%20Put%20option.xls
+        '''
+        S0 = 50
+        n = 5
+        T = 0.4167
+        strike = 50
+        sigma = 0.4
+        r = 0.1
+        mdl = create_binomial_model(sigma, r, S0, T, n)
+        npv = american_put_price(mdl, strike)
+        self.assertAlmostEqual(4.48859919382338, npv)
