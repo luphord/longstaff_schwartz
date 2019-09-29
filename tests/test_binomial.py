@@ -2,31 +2,9 @@ import unittest
 
 import numpy as np
 
-from longstaff_schwartz.binomial import BinomialModel, create_binomial_model
-
-
-def call_payoff(strike):
-    return lambda S: np.maximum(S - strike, 0)
-
-
-def put_payoff(strike):
-    return lambda S: np.maximum(strike - S, 0)
-
-
-def european_call_price(mdl, strike):
-    return mdl.evaluate(call_payoff(strike))
-
-
-def american_call_price(mdl, strike):
-    return mdl.evaluate_american_exercisable(call_payoff(strike))
-
-
-def european_put_price(mdl, strike):
-    return mdl.evaluate(put_payoff(strike))
-
-
-def american_put_price(mdl, strike):
-    return mdl.evaluate_american_exercisable(put_payoff(strike))
+from longstaff_schwartz.binomial import BinomialModel, create_binomial_model, \
+    call_payoff, european_call_price, european_put_price, american_call_price,\
+    american_put_price
 
 
 class TestBinomial(unittest.TestCase):

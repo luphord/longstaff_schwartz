@@ -54,3 +54,27 @@ class BinomialModel:
 def create_binomial_model(sigma, r, S0, T, n=10):
     u = np.exp(sigma * np.sqrt(T / n))
     return BinomialModel(u, 1/u, r, S0, T, n)
+
+
+def call_payoff(strike):
+    return lambda S: np.maximum(S - strike, 0)
+
+
+def put_payoff(strike):
+    return lambda S: np.maximum(strike - S, 0)
+
+
+def european_call_price(mdl, strike):
+    return mdl.evaluate(call_payoff(strike))
+
+
+def american_call_price(mdl, strike):
+    return mdl.evaluate_american_exercisable(call_payoff(strike))
+
+
+def european_put_price(mdl, strike):
+    return mdl.evaluate(put_payoff(strike))
+
+
+def american_put_price(mdl, strike):
+    return mdl.evaluate_american_exercisable(put_payoff(strike))
