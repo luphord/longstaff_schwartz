@@ -39,16 +39,23 @@ class BinomialModel:
             v = v[1:]*q + v[:-1]*(1-q)
         return v[0] * np.exp(-self.r * self.T)
 
-    def evaluate_american_exercisable(self, payoff):
+    def evaluate_american_exercisable_iter(self, payoff):
         df = np.exp(-self.r * self.dt)
-        v = payoff(self.ST)
-        s = self.ST
+        continuation = payoff(self.ST)
+        spot = self.ST
         q = self.q
-        while len(v) > 1:
-            v = df * (v[1:]*q + v[:-1]*(1-q))
-            s = df * (s[1:]*q + s[:-1]*(1-q))
-            v = np.maximum(v, payoff(s))
-        return v[0]
+        while len(continuation) > 1:
+            continuation = df * (continuation[1:]*q + continuation[:-1]*(1-q))
+            spot = df * (spot[1:]*q + spot[:-1]*(1-q))
+            exercise = payoff(spot)
+            optimal = np.maximum(continuation, exercise)
+            yield continuation, spot, exercise, optimal
+            continuation = optimal
+
+    def evaluate_american_exercisable(self, payoff):
+        for _, _, _, opt in self.evaluate_american_exercisable_iter(payoff):
+            pass
+        return opt[0]
 
 
 def create_binomial_model(sigma, r, S0, T, n=10):
