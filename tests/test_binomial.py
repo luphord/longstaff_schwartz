@@ -106,3 +106,15 @@ class TestBinomial(unittest.TestCase):
         mdl = create_binomial_model(sigma, r, S0, T, n)
         npv = american_put_price(mdl, strike)
         self.assertAlmostEqual(4.48859919382338, npv)
+
+    def test_deep_itm_american_out(self):
+        '''Test a deep in the money american out option.'''
+        S0 = 100
+        n = 5
+        T = 5
+        strike = 500
+        sigma = 0.4
+        r = 0.1
+        mdl = create_binomial_model(sigma, r, S0, T, n)
+        npv = american_put_price(mdl, strike)
+        self.assertAlmostEqual(strike - S0, npv)
