@@ -85,3 +85,14 @@ def european_put_price(mdl, strike):
 
 def american_put_price(mdl, strike):
     return mdl.evaluate_american_exercisable(put_payoff(strike))
+
+
+def american_put_exercise_barrier(mdl, strike):
+    exercises = []
+    payoff = put_payoff(strike)
+    for cnt, s, ex, opt in mdl.evaluate_american_exercisable_iter(payoff):
+        ex_idx = ex > cnt
+        ex_spots = s[ex_idx]
+        exercises.append(ex_spots.max() if ex_idx.any() else None)
+    exercises.reverse()
+    return np.array(exercises)

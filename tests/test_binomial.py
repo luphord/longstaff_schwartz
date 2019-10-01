@@ -4,7 +4,7 @@ import numpy as np
 
 from longstaff_schwartz.binomial import BinomialModel, create_binomial_model, \
     call_payoff, european_call_price, european_put_price, american_call_price,\
-    american_put_price
+    american_put_price, american_put_exercise_barrier
 
 
 class TestBinomial(unittest.TestCase):
@@ -118,3 +118,25 @@ class TestBinomial(unittest.TestCase):
         mdl = create_binomial_model(sigma, r, S0, T, n)
         npv = american_put_price(mdl, strike)
         self.assertAlmostEqual(strike - S0, npv)
+
+    def test_american_exercise_barrier(self):
+        '''Test exercise barrier of american out option.'''
+        S0 = 100
+        n = 100
+        T = 5
+        strike = 100
+        sigma = 0.4
+        r = 0.1
+        mdl = create_binomial_model(sigma, r, S0, T, n)
+        exercise_barrier = american_put_exercise_barrier(mdl, strike)
+        last_even = None
+        last_odd = None
+        for i, s in enumerate(exercise_barrier):
+            if i % 2 == 0:
+                if last_even is not None:
+                    self.assertGreaterEqual(s, last_even)
+                last_even = s
+            elif i % 2 == 1:
+                if last_odd is not None:
+                    self.assertGreaterEqual(s, last_odd)
+                last_odd = s
