@@ -93,6 +93,6 @@ def american_put_exercise_barrier(mdl, strike):
     for cnt, s, ex, opt in mdl.evaluate_american_exercisable_iter(payoff):
         ex_idx = (ex >= cnt) & (ex > 0)
         ex_spots = s[ex_idx]
-        exercises.append(ex_spots.max() if ex_idx.any() else None)
+        exercises.append(ex_spots.max() if ex_idx.any() else np.nan)
     exercises.reverse()
     return np.array(exercises)
