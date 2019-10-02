@@ -129,14 +129,14 @@ class TestBinomial(unittest.TestCase):
         r = 0.1
         mdl = create_binomial_model(sigma, r, S0, T, n)
         exercise_barrier = american_put_exercise_barrier(mdl, strike)
-        last_even = None
-        last_odd = None
+        last_even = np.nan
+        last_odd = np.nan
         for i, s in enumerate(exercise_barrier):
             if i % 2 == 0:
-                if last_even is not None:
+                if not np.isnan(last_even):
                     self.assertGreaterEqual(s, last_even)
                 last_even = s
             elif i % 2 == 1:
-                if last_odd is not None:
+                if not np.isnan(last_odd):
                     self.assertGreaterEqual(s, last_odd)
                 last_odd = s
