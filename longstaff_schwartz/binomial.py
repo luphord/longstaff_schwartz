@@ -1,4 +1,5 @@
 import numpy as np
+from numpy.polynomial import Polynomial
 
 
 class BinomialModel:
@@ -96,3 +97,10 @@ def american_put_exercise_barrier(mdl, strike):
         exercises.append(ex_spots.max() if ex_idx.any() else np.nan)
     exercises.reverse()
     return np.array(exercises)
+
+
+def american_put_exercise_barrier_fitted(mdl, strike, degree=4):
+    barrier = american_put_exercise_barrier(mdl, strike)
+    t = np.linspace(0, mdl.T, mdl.n)
+    ex_exists = ~np.isnan(barrier)
+    return Polynomial.fit(t[ex_exists], barrier[ex_exists], degree)

@@ -4,7 +4,8 @@ import numpy as np
 
 from longstaff_schwartz.binomial import BinomialModel, create_binomial_model, \
     call_payoff, european_call_price, european_put_price, american_call_price,\
-    american_put_price, american_put_exercise_barrier
+    american_put_price, american_put_exercise_barrier, \
+    american_put_exercise_barrier_fitted
 
 
 class TestBinomial(unittest.TestCase):
@@ -140,3 +141,18 @@ class TestBinomial(unittest.TestCase):
                 if not np.isnan(last_odd):
                     self.assertGreaterEqual(s, last_odd)
                 last_odd = s
+
+    def test_american_exercise_barrier_fitted(self):
+        '''Test fitted exercise barrier of american out option.'''
+        S0 = 100
+        n = 100
+        T = 5
+        strike = 100
+        sigma = 0.4
+        r = 0.1
+        mdl = create_binomial_model(sigma, r, S0, T, n)
+        barrier = american_put_exercise_barrier_fitted(mdl, strike, 2)
+        barrier = barrier.convert(domain=[-1, 1])
+        self.assertGreater(barrier.coef[0], 0)
+        self.assertLessEqual(barrier.coef[1], 0)
+        self.assertGreater(barrier.coef[2], 0)
