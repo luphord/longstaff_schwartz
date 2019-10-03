@@ -24,8 +24,8 @@ A Python implementation of the Longstaff-Schwartz linear regression algorithm fo
 Talks
 -----
 
-* PyData Meetup 2019-09-18: Slides_, `Jupyter Notebook`_
 * PyConDE 2019-10-10: `Slides <https://raw.githack.com/luphord/longstaff_schwartz/master/talks/talk_pyconde_2019-10-10/index.html>`__, `Jupyter Notebook <https://github.com/luphord/longstaff_schwartz/blob/master/talks/talk_pyconde_2019-10-10/Notebook_PyConDE_2019-10-10.ipynb>`__
+* PyData Meetup 2019-09-18: Slides_, `Jupyter Notebook`_
 
 .. _Slides: https://raw.githack.com/luphord/longstaff_schwartz/master/talks/talk_meetup_2019-09-18/index.html
 .. _`Jupyter Notebook`: https://github.com/luphord/longstaff_schwartz/blob/master/talks/talk_meetup_2019-09-18/Notebook_Meetup_2019-09-18.ipynb
