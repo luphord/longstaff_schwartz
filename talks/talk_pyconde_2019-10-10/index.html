@@ -136,7 +136,33 @@ name: agenda
 ## Example: Value of a Gold Coin
 
 ![](img/coin.png)
-Current value: 680€
+
+- Current value about 680€
+
+---
+
+# What is a Call Right?
+## Example: Value of a Gold Coin
+
+
+- Gold price may further increase, but could also fall
+- I do not want to sell the coin
+- I want to protect myself against a loss due to falling gold prices
+- I want to profit from a rising gold price 
+- Is all of that possible? Yes, but I have to pay for it
+
+---
+
+# What is a Call Right?
+## Example: Value of a Gold Coin
+
+We enter a contract:
+- If the gold price (and the value of the coin) rises, nothing further happens
+- If the gold price falls, I can pick any date within the next five years where you have to pay me the difference between the 680€ and the current price; e.g. if the value of the coin was 610€, you would pay me 680€ - 610€ = 70€
+- I can only pick a date once, but I can choose any day within the five years
+- This is called a call right
+- This specific contract is called an American Put Option
+- How much should I pay / should you charge me for this contract?
 
 ---
 
@@ -145,10 +171,10 @@ Current value: 680€
 
 ![drawing](draw/american-option.svg)
 
-An American put option gives the holder the right to sell the underlying stock for the *strike price* on any given day until maturity.
+The American Put Option gives me the right to sell the gold coin for for 680€ (strike) on any given day within the next 5 years (maturity). As I do not actually want to sell the gold coin, we just exchange the difference between the coin price on that day (spot) and 680€ (strike).
 The payoff is
 ```
-max(strike - spot, 0)
+max(strike - spot, 0) = max(680€ - spot, 0)
 ```
 
 

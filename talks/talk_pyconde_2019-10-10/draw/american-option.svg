@@ -9,9 +9,9 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="307.22488mm"
+   width="301.28415mm"
    height="145.40092mm"
-   viewBox="0 0 307.22488 145.40092"
+   viewBox="0 0 301.28415 145.40092"
    version="1.1"
    id="svg224"
    inkscape:version="0.91 r13725"
@@ -112,14 +112,14 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.98994949"
-     inkscape:cx="564.15332"
-     inkscape:cy="148.46646"
+     inkscape:cx="395.11598"
+     inkscape:cy="146.44615"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1920"
      inkscape:window-height="1027"
-     inkscape:window-x="0"
+     inkscape:window-x="1280"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
      fit-margin-top="0"
@@ -142,7 +142,7 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(15.450788,-122.40542)">
+     transform="translate(9.5100118,-122.40542)">
     <path
        style="fill:none;stroke:#000000;stroke-width:1.9888221;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1Send)"
        d="m 23.661302,253.91072 218.378638,0"
@@ -163,7 +163,7 @@
          id="tspan5988"
          x="-1.9208428"
          y="132.79825"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14.11111069px;font-family:Lato;-inkscape-font-specification:Lato;stroke-width:0.26458332">Stock Price</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14.11111069px;font-family:Lato;-inkscape-font-specification:Lato;stroke-width:0.26458332">Coin Value</tspan></text>
     <text
        id="text21"
        y="257.69049"
@@ -186,22 +186,23 @@
        style="stroke:#6a5d93;stroke-linecap:butt;stroke-linejoin:round;stroke-opacity:1">
       <path
          clip-path="url(#pb0607facb3)"
-         d="m 69.218182,207.24544 5.158706,-1.92431 5.158705,9.94291 5.158706,1.44427 5.158706,-0.22977 5.158705,0.0311 5.15871,5.07272 5.1587,4.4934 5.15871,-4.0291 5.1587,-2.42595 5.15871,1.92334 5.1587,6.89891 5.15871,0.92141 5.15871,-7.39597 5.1587,-4.5404 5.15871,1.42064 5.1587,-1.00105 5.15871,-0.71805 5.1587,2.6065 5.15871,-4.34339 5.15871,-0.50664 5.1587,3.14228 5.15871,0.27053 5.1587,-15.34454 5.15871,-2.77347 5.1587,-4.07738 5.15871,-15.58855 5.15871,-5.4575 5.1587,-19.59728 5.15871,3.93032 5.1587,-7.42229 5.15871,0.39686 5.1587,-2.30559 5.15871,-0.0838 5.15871,-5.74656 5.1587,-32.03614 5.15871,19.61855 5.1587,17.55027 5.15871,19.66195 5.1587,9.7901 5.15871,-14.25394 5.15871,-4.25935 5.1587,0.34626 5.15871,1.59098 5.1587,-3.51123 5.15871,-14.05448 5.1587,2.79024 5.15871,16.45572 5.1587,-1.42721 5.15871,-1.66668 5.15871,-13.59204 5.1587,-8.0555 5.15871,-33.56757 5.1587,-3.48802 5.15871,-4.222149 5.15871,-2.237301 5.1587,24.61236 5.15871,-19.72957 5.1587,-4.096862 5.15871,18.231712"
+         d="m 67.900295,140.75833 3.401523,20.07143 2.083634,11.44262 4.719411,-4.55457 3.840818,14.26742 5.598001,18.02761 6.915893,-5.92515 5.1587,5.99311 7.355185,14.96722 5.598,7.57211 8.23378,-1.07608 5.1587,6.89891 5.15871,0.92141 5.15871,-7.39597 5.1587,-4.5404 5.15871,1.42064 5.1587,-1.00105 5.15871,-0.71805 5.1587,2.6065 5.15871,-4.34339 5.15871,-0.50664 5.1587,3.14228 5.15871,0.27053 5.1587,-15.34454 5.15871,-2.77347 5.1587,-4.07738 5.15871,-15.58855 5.15871,-5.4575 5.1587,-19.59728 5.15871,3.93032 5.1587,-7.42229 5.15871,0.39686 5.1587,-2.30559 5.15871,-0.0838 5.15871,-5.74656 5.1587,-32.03614 5.15871,19.61855 5.1587,17.55027 5.15871,19.66195 5.1587,9.7901 5.15871,-14.25394 5.15871,-4.25935 5.1587,0.34626 5.15871,1.59098 5.1587,-3.51123 5.15871,-14.05448 5.1587,2.79024 5.15871,16.45572 5.1587,-1.42721 5.15871,-1.66668 5.15871,-13.59204 5.1587,-8.0555 5.15871,-33.56757 5.1587,-3.48802 5.15871,-4.222149 5.15871,-2.237301 5.1587,24.61236 5.15871,-19.72957 5.1587,-4.096862 5.15871,18.231712"
          style="fill:none;stroke:#6a5d93;stroke-width:1.5;stroke-linecap:square;stroke-linejoin:round;stroke-opacity:1"
          id="path326"
-         inkscape:connector-curvature="0" />
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc" />
     </g>
     <text
        id="text980"
-       y="210.25296"
-       x="-15.916457"
+       y="211.94627"
+       x="-10.272012"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;line-height:1.25;font-family:Lato;-inkscape-font-specification:Lato;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
        xml:space="preserve"><tspan
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14.11111069px;font-family:Lato;-inkscape-font-specification:Lato;stroke-width:0.26458332"
-         y="210.25296"
-         x="-15.916457"
+         y="211.94627"
+         x="-10.272012"
          id="tspan978"
-         sodipodi:role="line">Strike</tspan></text>
+         sodipodi:role="line">680€</tspan></text>
     <rect
        style="fill:#0000c6;fill-opacity:0.33333333;stroke:none;stroke-width:1.00559187;stroke-miterlimit:4;stroke-dasharray:1.00559188, 1.00559188;stroke-dashoffset:0"
        id="rect982"
@@ -219,14 +220,14 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;line-height:1.25;font-family:Lato;-inkscape-font-specification:Lato;letter-spacing:0px;word-spacing:0px;fill:#0526ff;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="118.25285"
+       x="115.43063"
        y="266.1123"
        id="text988"><tspan
          sodipodi:role="line"
          id="tspan986"
-         x="118.25285"
+         x="115.43063"
          y="266.1123"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.87777805px;font-family:Lato;-inkscape-font-specification:Lato;fill:#0526ff;fill-opacity:1;stroke-width:0.26458332">Should we exercise the option?</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.87777805px;font-family:Lato;-inkscape-font-specification:Lato;fill:#0526ff;fill-opacity:1;stroke-width:0.26458332">Should I exercise the option?</tspan></text>
     <g
        aria-label="{"
        transform="matrix(0,-1,1,0,0,0)"
