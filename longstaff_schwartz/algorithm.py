@@ -2,7 +2,8 @@ import numpy as np
 from numpy.polynomial import Polynomial
 
 
-def longstaff_schwartz_iter(X, t, df, fit, exercise_payoff):
+def longstaff_schwartz_iter(X, t, df, fit, exercise_payoff,
+                            itm_select=None):
     # given no prior exercise we just receive the final payoff
     cashflow = exercise_payoff(X[-1, :])
     # iterating backwards in time
@@ -13,7 +14,10 @@ def longstaff_schwartz_iter(X, t, df, fit, exercise_payoff):
         # exercise value for time t[i]
         exercise = exercise_payoff(x)
         # boolean index of all in-the-money paths
-        itm = exercise > 0
+        # (paths considered for exercise)
+        itm = itm_select(exercise, x) \
+            if itm_select \
+            else np.full(x.shape, True)
         # fit curve
         fitted = fit(x[itm], cashflow[itm])
         # approximate continuation value
@@ -26,9 +30,9 @@ def longstaff_schwartz_iter(X, t, df, fit, exercise_payoff):
         yield cashflow, x, fitted, continuation, exercise, ex_idx
 
 
-def longstaff_schwartz(X, t, df, fit, exercise_payoff):
+def longstaff_schwartz(X, t, df, fit, exercise_payoff, itm_select=None):
     for cashflow, *_ in longstaff_schwartz_iter(X, t, df, fit,
-                                                exercise_payoff):
+                                                exercise_payoff, itm_select):
         pass
     return cashflow.mean(axis=0) * df(t[0], t[1])
 

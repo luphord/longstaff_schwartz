@@ -53,6 +53,10 @@ def fit_quadratic(x, y):
     return Polynomial.fit(x, y, 2)
 
 
+def itm(payoff, spot):
+    return payoff > 0
+
+
 class TestLongstaff_schwartz(unittest.TestCase):
     '''Tests for `longstaff_schwartz` package.'''
 
@@ -86,7 +90,7 @@ class TestLongstaff_schwartz(unittest.TestCase):
         '''Test general algorithm against example value
            of original Longstaff-Schwartz paper'''
         value = longstaff_schwartz(X, t, constant_rate_df, fit_quadratic,
-                                   american_put_payoff)
+                                   american_put_payoff, itm)
         self.assertEqual(0.1144, np.round(value, 4))
         df = np.exp(-r * (t[-1] - t[0]))
         european_value = american_put_payoff(X[-1, :]).mean() * df
@@ -102,7 +106,10 @@ class TestLongstaff_schwartz(unittest.TestCase):
         n = 50
         x = gbm.simulate(t, n, rnd)
         general = longstaff_schwartz(x, t, constant_rate_df, fit_quadratic,
-                                     american_put_payoff)
+                                     american_put_payoff, itm)
         specific = longstaff_schwartz_american_option_quadratic(x, t, r,
                                                                 strike)
         self.assertAlmostEqual(general, specific)
+        allpathregr = longstaff_schwartz(x, t, constant_rate_df, fit_quadratic,
+                                         american_put_payoff)
+        self.assertNotAlmostEqual(general, allpathregr)
