@@ -11,11 +11,14 @@ from longstaff_schwartz.binomial import BinomialModel, create_binomial_model, \
 class TestBinomial(unittest.TestCase):
     '''Tests for `binomial` package.'''
 
-    def test_binomial(self):
+    def test_european_call_price_decrease_with_strike(self):
         mdl = create_binomial_model(0.1, 0.02, 100, 1, n=100)
-        print(mdl)
-        print([float(np.round(european_call_price(mdl, s), 2))
-               for s in range(90, 110)])
+        last = None
+        for s in range(90, 110):
+            current = european_call_price(mdl, s)
+            if last is not None:
+                self.assertLess(current, last)
+            last = current
 
     def test_thayer_watkins_example(self):
         '''Test example values by Thayer Watkins in
