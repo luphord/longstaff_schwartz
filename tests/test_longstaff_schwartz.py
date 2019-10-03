@@ -9,12 +9,14 @@ from click.testing import CliRunner
 
 import numpy as np
 from numpy.polynomial import Polynomial
+from numpy.random import RandomState
 
 from longstaff_schwartz import cli
 from longstaff_schwartz.algorithm import \
     longstaff_schwartz_american_option_quadratic, \
     ls_american_option_quadratic_iter, \
     longstaff_schwartz
+from longstaff_schwartz.stochastic_process import GeometricBrownianMotion
 
 
 # Test values from chapter 1, Numerical Example
@@ -89,3 +91,18 @@ class TestLongstaff_schwartz(unittest.TestCase):
         df = np.exp(-r * (t[-1] - t[0]))
         european_value = american_put_payoff(X[-1, :]).mean() * df
         self.assertEqual(0.0564, np.round(european_value, 4))
+
+    def test_general_against_specific_algorithm(self):
+        '''Choose parameters for general algorithm implementation
+           such that they math the american put option specific code
+        '''
+        gbm = GeometricBrownianMotion(mu=r, sigma=0.1)
+        rnd = RandomState(1234)
+        t = np.linspace(0, 5, 20)
+        n = 50
+        x = gbm.simulate(t, n, rnd)
+        general = longstaff_schwartz(x, t, constant_rate_df, fit_quadratic,
+                                     american_put_payoff)
+        specific = longstaff_schwartz_american_option_quadratic(x, t, r,
+                                                                strike)
+        self.assertAlmostEqual(general, specific)
