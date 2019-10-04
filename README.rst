@@ -93,7 +93,7 @@ For details see `PyData Meetup Jupyter Notebook`_.
 Approximation of continuation value
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. image:: docs/_static/approximated-continuation-and-exercise-value-1.png
+.. image:: docs/_static/approximated-continuation-and-exercise-value-1.svg
 
 
 Favourable exercise
