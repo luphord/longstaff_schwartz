@@ -1,5 +1,5 @@
-Welcome to Longstaff-Schwartz Algorithm's documentation!
-======================================
+Welcome to Longstaff-Schwartz Algorithm documenation!
+=====================================================
 
 .. toctree::
    :maxdepth: 2

@@ -82,6 +82,25 @@ Usage
         assert np.round(npv_european, 4) == 0.0598
         assert npv_american > npv_european
 
+Plots
+-----
+
+For details see `PyData Meetup Jupyter Notebook`_.
+
+.. _`PyData Meetup Jupyter Notebook`: https://github.com/luphord/longstaff_schwartz/blob/master/talks/talk_meetup_2019-09-18/Notebook_Meetup_2019-09-18.ipynb
+
+
+Approximation of continuation value
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. image:: docs/_static/approximated-continuation-and-exercise-value-1.png
+
+
+Favourable exercise
+~~~~~~~~~~~~~~~~~~~
+
+.. image:: docs/_static/exercise-or-hold.svg
+.. image:: docs/_static/first-exercises.svg
 
 Credits
 -------
