@@ -18,6 +18,7 @@ Longstaff-Schwartz Algorithm
 
 A Python implementation of the Longstaff-Schwartz linear regression algorithm for the evaluation of call rights and American options.
 
+* Seminal paper: **Francis A. Longstaff, Eduardo S. Schwartz**, *Valuing American Options by Simulation: A Simple Least-Squares Approach* (The Review of Financial Studies) (2001) Vol 14, No 1, pp. 113-147
 * Documentation: https://longstaff-schwartz.readthedocs.io
 * Free software: MIT license
 
@@ -105,7 +106,14 @@ Favourable exercise
 Credits
 -------
 
-This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
+Main developer is luphord_.
+
+.. _luphord: https://github.com/luphord
+
+Primary source for the algorithm is **Francis A. Longstaff, Eduardo S. Schwartz**, *Valuing American Options by Simulation: A Simple Least-Squares Approach* (The Review of Financial Studies) (2001) Vol 14, No 1, pp. 113-147.
+There is no affiliation between the authors of the paper and this code.
+
+This package was prepared with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
 
 .. _Cookiecutter: https://github.com/audreyr/cookiecutter
 .. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
