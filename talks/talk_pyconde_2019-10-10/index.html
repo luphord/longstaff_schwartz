@@ -106,7 +106,7 @@ name: agenda
 
 <div class="offset2"></div>
 
-## What is a Call / Cancel / Enter / Exercise Right?
+## What is a Call / Exercise Right?
 - American Put Option
 
 ## Valuation by Simulation
@@ -139,11 +139,29 @@ name: agenda
 
 - Current value about 680€
 
+--- 
+.center[Chart with historic prices goes here]
+
+--- 
+
 ---
 
 # What is a Call Right?
-## Example: Value of a Gold Coin
+## Future Scenarios of the Coin Value
 
+![drawing](draw/monte-carlo.svg)
+
+Let's create a simulation model of the future coin value. Each line is a possible future scenario.
+
+--- 
+.center[Add prices in chart]
+
+--- 
+
+---
+
+# What is a Call Right?
+## I don't want the Coin to loose Value
 
 - Gold price may further increase, but could also fall
 - I do not want to sell the coin
@@ -151,18 +169,61 @@ name: agenda
 - I want to profit from a rising gold price 
 - Is all of that possible? Yes, but I have to pay for it
 
+--- 
+.center[Requirements table goes here]
+
+--- 
+
 ---
 
 # What is a Call Right?
-## Example: Value of a Gold Coin
+## Contract on Coin Value: American Put Option
 
 We enter a contract:
-- If the gold price (and the value of the coin) rises, nothing further happens
-- If the gold price falls, I can pick any date within the next five years where you have to pay me the difference between the 680€ and the current price; e.g. if the value of the coin was 610€, you would pay me 680€ - 610€ = 70€
+- I can pick any date within the next five years where you have to pay me the difference between the 680€ and the current price; e.g. if the value of the coin was 610€, you would pay me 680€ - 610€ = 70€
 - I can only pick a date once, but I can choose any day within the five years
-- This is called a call right
+- This is called a call right or exercise right
 - This specific contract is called an American Put Option
 - How much should I pay / should you charge me for this contract?
+- When should I exercise the option (which date should I choose)?
+
+--- 
+.center[Cashflow graphic with person icons and arrows goes here]
+
+--- 
+
+
+---
+
+# What is a Call Right?
+## Payoff of the American Put Option
+
+- If the gold price (and the value of the coin) rises, I will not exercise the option, i.e. I get a payoff of 0€
+- If the gold price falls and the coin is worth x < 680€, I can can exercise the option and get the difference 680€ - x
+- Expressing this in a common formula, the payoff of the option when exercising is
+```
+max(680€ - x, 0)
+```
+
+--- 
+.center[Payoff Chart goes here]
+
+--- 
+
+---
+
+# What is a Call Right?
+## Check of Requirements
+
+Let's check my requirements:
+- I get to keep the coin
+- If the gold price rises, my coin becomes more valuable and the option does nothing 
+- If the gold price falls, my coin looses value, but I can exercise the option to make up for the loss
+
+--- 
+.center[Requirements table with check marks goes here]
+
+--- 
 
 ---
 
@@ -273,6 +334,16 @@ The computational effort grows exponentially with the number of call rights.
 - This approach is called nested simulation because we nest one simulation into another
 - This approach gives the correct result...
 - ...but the computational effort **grows exponentially** with more call rights
+
+---
+
+
+# Approximation of Continuation Value
+
+--- 
+.center[Timeline chart with multiple paths goes here]
+
+--- 
 
 ---
 
