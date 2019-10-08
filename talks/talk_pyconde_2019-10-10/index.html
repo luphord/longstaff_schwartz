@@ -198,19 +198,16 @@ We enter a contract:
 ---
 
 # What is a Call Right?
-## Payoff of the American Put Option
+## American Put Option Payoff
 
-- If the gold price (and the value of the coin) rises, I will not exercise the option, i.e. I get a payoff of 0€
+![drawing](draw/american-option-payoff.svg)
+
+- If the gold price rises, I will not exercise the option, i.e. I get a payoff of 0€
 - If the gold price falls and the coin is worth x < 680€, I can can exercise the option and get the difference 680€ - x
 - Expressing this in a common formula, the payoff of the option when exercising is
 ```
 max(680€ - x, 0)
 ```
-
---- 
-.center[Payoff Chart goes here]
-
---- 
 
 ---
 
