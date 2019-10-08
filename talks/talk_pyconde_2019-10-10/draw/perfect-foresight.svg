@@ -9,12 +9,12 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="292.12241mm"
-   height="173.06258mm"
-   viewBox="0 0 292.12241 173.06258"
+   width="290.62619mm"
+   height="153.81917mm"
+   viewBox="0 0 290.62619 153.81917"
    version="1.1"
    id="svg224"
-   inkscape:version="0.91 r13725"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
    sodipodi:docname="perfect-foresight.svg">
   <defs
      id="defs218">
@@ -28,8 +28,8 @@
        inkscape:isstock="true">
       <path
          id="path1632"
-         d="M 0,0 5,-5 -12.5,0 5,5 0,0 Z"
-         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
          transform="matrix(-0.2,0,0,-0.2,-1.2,0)"
          inkscape:connector-curvature="0" />
     </marker>
@@ -44,8 +44,8 @@
        inkscape:collect="always">
       <path
          transform="matrix(-0.2,0,0,-0.2,-1.2,0)"
-         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
-         d="M 0,0 5,-5 -12.5,0 5,5 0,0 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
          id="path5438"
          inkscape:connector-curvature="0" />
     </marker>
@@ -60,8 +60,8 @@
        inkscape:collect="always">
       <path
          id="path4751"
-         d="M 0,0 5,-5 -12.5,0 5,5 0,0 Z"
-         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
          transform="matrix(-0.2,0,0,-0.2,-1.2,0)"
          inkscape:connector-curvature="0" />
     </marker>
@@ -75,8 +75,8 @@
        inkscape:isstock="true">
       <path
          id="path4745"
-         d="M 0,0 5,-5 -12.5,0 5,5 0,0 Z"
-         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
          transform="matrix(-0.4,0,0,-0.4,-4,0)"
          inkscape:connector-curvature="0" />
     </marker>
@@ -90,8 +90,8 @@
        inkscape:isstock="true">
       <path
          id="path4739"
-         d="M 0,0 5,-5 -12.5,0 5,5 0,0 Z"
-         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
          transform="matrix(-0.8,0,0,-0.8,-10,0)"
          inkscape:connector-curvature="0" />
     </marker>
@@ -121,16 +121,16 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.979899"
-     inkscape:cx="748.64367"
-     inkscape:cy="397.21725"
+     inkscape:zoom="0.70000001"
+     inkscape:cx="495.8003"
+     inkscape:cy="337.8012"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1920"
-     inkscape:window-height="1027"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
+     inkscape:window-height="1001"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
      inkscape:window-maximized="1"
      fit-margin-top="0"
      fit-margin-left="0"
@@ -152,40 +152,35 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(0.34830048,-101.39887)">
+     transform="translate(-0.41082478,-120.64228)">
     <path
        style="fill:none;stroke:#000000;stroke-width:1.9888221;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1Send)"
-       d="m 23.661302,253.91072 218.378638,0"
+       d="M 23.661302,253.91072 H 242.03994"
        id="path226"
        inkscape:connector-curvature="0" />
     <path
        inkscape:connector-curvature="0"
        id="path5436"
-       d="m 33.820891,266.33817 0,-128.37192"
+       d="M 33.820891,266.33817 V 137.96625"
        style="fill:none;stroke:#000000;stroke-width:1.52484548;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker5440)" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;line-height:1.25;font-family:Lato;-inkscape-font-specification:Lato;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="32.359711"
-       y="111.7917"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Lato;-inkscape-font-specification:Lato;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="33.027885"
+       y="131.03511"
        id="text5990"><tspan
          sodipodi:role="line"
-         id="tspan5988"
-         x="32.359711"
-         y="111.7917"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14.11111069px;font-family:Lato;-inkscape-font-specification:Lato;text-align:center;text-anchor:middle;stroke-width:0.26458332">Underlying</tspan><tspan
-         sodipodi:role="line"
-         x="32.359711"
-         y="129.43059"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14.11111069px;font-family:Lato;-inkscape-font-specification:Lato;text-align:center;text-anchor:middle;stroke-width:0.26458332"
-         id="tspan1055">Value</tspan></text>
+         x="33.027885"
+         y="131.03511"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14.11111069px;line-height:1.25;font-family:Lato;-inkscape-font-specification:Lato;text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan1055">Coin Value</tspan></text>
     <text
        id="text21"
        y="257.69049"
        x="252.48811"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;line-height:1.25;font-family:Lato;-inkscape-font-specification:Lato;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Lato;-inkscape-font-specification:Lato;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
        xml:space="preserve"><tspan
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14.11111069px;font-family:Lato;-inkscape-font-specification:Lato;stroke-width:0.26458332"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14.11111069px;line-height:1.25;font-family:Lato;-inkscape-font-specification:Lato;stroke-width:0.26458332"
          y="257.69049"
          x="252.48811"
          id="tspan19"
@@ -203,17 +198,17 @@
     </g>
     <path
        style="fill:none;stroke:#000000;stroke-width:1.14760673;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.14760663, 1.14760663;stroke-dashoffset:0;stroke-opacity:1"
-       d="m 134.84877,255.91465 0,-96.29958"
+       d="M 134.84877,255.91465 V 159.61507"
        id="path1630"
        inkscape:connector-curvature="0" />
     <text
        id="text1934"
        y="271.88617"
        x="134.18941"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;line-height:1.25;font-family:Lato;-inkscape-font-specification:Lato;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Lato;-inkscape-font-specification:Lato;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
        xml:space="preserve"><tspan
          id="tspan1932"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14.11111069px;font-family:Lato;-inkscape-font-specification:Lato;text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14.11111069px;line-height:1.25;font-family:Lato;-inkscape-font-specification:Lato;text-align:center;text-anchor:middle;stroke-width:0.26458332"
          y="271.88617"
          x="134.18941"
          sodipodi:role="line">Call Right</tspan></text>
@@ -235,7 +230,7 @@
        style="fill:#e35b5b;fill-opacity:0.26000001;stroke:none;stroke-width:7.40836048;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.62851357px;line-height:1.25;font-family:Lato;-inkscape-font-specification:Lato;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#0500ff;fill-opacity:1;stroke:none;stroke-width:0.13606925;stroke-opacity:1"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Lato;-inkscape-font-specification:Lato;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#0500ff;fill-opacity:1;stroke:none;stroke-width:0.13606925;stroke-opacity:1"
        x="40.127262"
        y="244.44891"
        id="text2008"
@@ -243,17 +238,17 @@
          sodipodi:role="line"
          x="40.127262"
          y="244.44891"
-         style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:7.25702715px;font-family:Lato;-inkscape-font-specification:'Lato Light';text-align:start;text-anchor:start;fill:#0500ff;fill-opacity:1;stroke:none;stroke-width:0.13606925;stroke-opacity:1"
+         style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:7.25702715px;line-height:1.25;font-family:Lato;-inkscape-font-specification:'Lato Light';text-align:start;text-anchor:start;fill:#0500ff;fill-opacity:1;stroke:none;stroke-width:0.13606925;stroke-opacity:1"
          id="tspan2006">Can we use this information?</tspan></text>
     <text
        transform="scale(1.0116565,0.98847781)"
        id="text2012"
        y="252.0197"
        x="113.30789"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.62851357px;line-height:1.25;font-family:Lato;-inkscape-font-specification:Lato;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#0500ff;fill-opacity:1;stroke:none;stroke-width:0.13606925;stroke-opacity:1"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Lato;-inkscape-font-specification:Lato;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#0500ff;fill-opacity:1;stroke:none;stroke-width:0.13606925;stroke-opacity:1"
        xml:space="preserve"><tspan
          id="tspan2010"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:7.25702715px;font-family:Lato;-inkscape-font-specification:'Lato Bold';text-align:start;text-anchor:start;fill:#0500ff;fill-opacity:1;stroke:none;stroke-width:0.13606925;stroke-opacity:1"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:7.25702715px;line-height:1.25;font-family:Lato;-inkscape-font-specification:'Lato Bold';text-align:start;text-anchor:start;fill:#0500ff;fill-opacity:1;stroke:none;stroke-width:0.13606925;stroke-opacity:1"
          y="252.0197"
          x="113.30789"
          sodipodi:role="line">YES!</tspan></text>
@@ -262,16 +257,16 @@
        id="text2016"
        y="144.81206"
        x="149.23773"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.62851357px;line-height:1.25;font-family:Lato;-inkscape-font-specification:Lato;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#f45858;fill-opacity:1;stroke:none;stroke-width:0.13606925;stroke-opacity:1"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Lato;-inkscape-font-specification:Lato;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#f45858;fill-opacity:1;stroke:none;stroke-width:0.13606925;stroke-opacity:1"
        xml:space="preserve"><tspan
          id="tspan2014"
-         style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:7.25702715px;font-family:Lato;-inkscape-font-specification:'Lato Light';text-align:start;text-anchor:start;fill:#f45858;fill-opacity:1;stroke:none;stroke-width:0.13606925;stroke-opacity:1"
+         style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:7.25702715px;line-height:1.25;font-family:Lato;-inkscape-font-specification:'Lato Light';text-align:start;text-anchor:start;fill:#f45858;fill-opacity:1;stroke:none;stroke-width:0.13606925;stroke-opacity:1"
          y="144.81206"
          x="149.23773"
          sodipodi:role="line">Can we use this information?</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.62851357px;line-height:1.25;font-family:Lato;-inkscape-font-specification:Lato;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#f45858;fill-opacity:1;stroke:none;stroke-width:0.13606925;stroke-opacity:1"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Lato;-inkscape-font-specification:Lato;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#f45858;fill-opacity:1;stroke:none;stroke-width:0.13606925;stroke-opacity:1"
        x="222.41835"
        y="152.38284"
        id="text2020"
@@ -279,7 +274,7 @@
          sodipodi:role="line"
          x="222.41835"
          y="152.38284"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:7.25702715px;font-family:Lato;-inkscape-font-specification:'Lato Bold';text-align:start;text-anchor:start;fill:#f45858;fill-opacity:1;stroke:none;stroke-width:0.13606925;stroke-opacity:1"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:7.25702715px;line-height:1.25;font-family:Lato;-inkscape-font-specification:'Lato Bold';text-align:start;text-anchor:start;fill:#f45858;fill-opacity:1;stroke:none;stroke-width:0.13606925;stroke-opacity:1"
          id="tspan2018">NO!</tspan></text>
   </g>
 </svg>
