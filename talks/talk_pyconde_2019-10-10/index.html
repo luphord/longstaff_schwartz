@@ -44,6 +44,16 @@
         width: 60px;
       }
 
+      img[alt=coin] {
+        width: 35%;
+        padding-right: 0px;
+      }
+
+      img[alt=coinvalue] {
+        width: 60%;
+        padding-left: 0px;
+      }
+
       img[alt=check] {
         width: 60px;
       }
@@ -136,12 +146,10 @@ name: agenda
 ## Valuation by Simulation
 - Risk-Neutral Valuation with Monte Carlo
 - Exercise vs. Continuation Value
-- Perfect Foresight / Hindsight
-- Nested Simulation
+- Perfect Foresight and Nested Simulation
 
 ## Longstaff-Schwartz Algorithm
 - Approximation of Continuation Value
-- Polynomials in NumPy
 - Longstaff-Schwartz Algorithm in Python
 - Approximation Steps
 - Exercise or Hold
@@ -159,14 +167,11 @@ name: agenda
 # What is a Call Right?
 ## Example: Value of a Gold Coin
 
-![](img/coin.png)
+![coin](img/coin.png)
+![coinvalue](draw/coin-value.svg)
 
-- Current value about 680€
-
---- 
-.center[Chart with historic prices goes here]
-
---- 
+- Current value of the gold coin is about 680€
+- Gold price may further increase, but could also fall
 
 ---
 
@@ -175,7 +180,8 @@ name: agenda
 
 ![drawing](draw/monte-carlo.svg)
 
-Let's create a simulation model of the future coin value. Each line is a possible future scenario.
+- Simulation model of the future coin value
+- Each line is a possible future scenario, called "path"
 
 ---
 
@@ -189,7 +195,6 @@ Let's create a simulation model of the future coin value. Each line is a possibl
 | Coin value falls | Not loose any value |![coinintable](draw/smiley_neutral.svg)|
 
 
-- Gold price may further increase, but could also fall
 - I do not want to sell the coin
 - I want to protect myself against a loss due to falling gold prices
 - I want to profit from a rising gold price 
@@ -279,8 +284,8 @@ max(680€ - x, 0)
 
 ![drawing](draw/exercise-or-continue.svg)
 
-Whenever the cashflow from exercising the put is larger than the continuation value, exercise is favourable.
-As it can only be exercised once, it would be exercised on the first favourable exercise date.
+- Whenever the cashflow from exercising the put is larger than the continuation value, exercise is favourable
+- As it can only be exercised once, it would be exercised on the first favourable exercise date
 
 ???
 
