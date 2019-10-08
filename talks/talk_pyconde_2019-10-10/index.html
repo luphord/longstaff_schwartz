@@ -44,6 +44,10 @@
         width: 60px;
       }
 
+      img[alt=check] {
+        width: 60px;
+      }
+
       img[alt=small-img] {
         margin-top: 30px;
         max-width:49%;
@@ -181,8 +185,8 @@ Let's create a simulation model of the future coin value. Each line is a possibl
 | Scenario         | What I want         |   |
 |------------------|---------------------|---|
 | Always           | Keep the coin       |![coinintable](img/coin.png)|
-| Coin value rises | Participate         |![coinintable](draw/smiley_happy.svg)||
-| Coin value falls | Not loose any value |![coinintable](draw/smiley_neutral.svg)||
+| Coin value rises | Participate         |![coinintable](draw/smiley_happy.svg)|
+| Coin value falls | Not loose any value |![coinintable](draw/smiley_neutral.svg)|
 
 
 - Gold price may further increase, but could also fall
@@ -229,15 +233,16 @@ max(680€ - x, 0)
 # What is a Call Right?
 ## Check of Requirements
 
-Let's check my requirements:
+
+| Scenario         | What I want         | Option Payoff | Coin Value + Option Payoff |
+|------------------|---------------------|---|
+| Always           | Keep the coin       |||![check](draw/check.svg)|
+| Coin value rises to x | Participate         |0€|x + 0€ = x > 680€|![check](draw/check.svg)|
+| Coin value falls to x | Not loose any value |680€ - x|x + 680€ - x = 680€|![check](draw/check.svg)|
+
 - I get to keep the coin
 - If the gold price rises, my coin becomes more valuable and the option does nothing 
 - If the gold price falls, my coin looses value, but I can exercise the option to make up for the loss
-
---- 
-.center[Requirements table with check marks goes here]
-
---- 
 
 ---
 
