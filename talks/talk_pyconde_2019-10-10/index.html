@@ -247,25 +247,12 @@ max(680€ - x, 0)
 ---
 
 # What is a Call Right?
-## American Put Option
+## American Put Option Exercise Decisions
 
 ![drawing](draw/american-option.svg)
 
-The American Put Option gives me the right to sell the gold coin for for 680€ (strike) on any given day within the next 5 years (maturity). As I do not actually want to sell the gold coin, we just exchange the difference between the coin price on that day (spot) and 680€ (strike).
-The payoff is
-```
-max(strike - spot, 0) = max(680€ - spot, 0)
-```
-
-
-???
-
-- There are many types of options, we focus on the simplest cases
-- An option is the right (but not the obligation) to buy or sell a stock at a given **strike price**
-- An option to buy a stock is called a call, an option to sell is called a put
-- For so-called European style call/put options there is a fixed date (maturity) when the underlying stock can be bought/sold
-- For so-called American style call/put options, the holder may choose any date (but only once) until maturity when to exercise the option
-- The holder of an American option has to decide every day whether to exercise their option or to hold it
+- Whenever the coin value drops below 680€, I have to decide whether to exercise the option or hold and wait
+- As long as the coin value is above 680€, I will hold
 
 ---
 
