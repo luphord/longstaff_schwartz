@@ -333,6 +333,10 @@ Obtaining the exercise value is simple: just plug the underlying value (stock pr
 
 ![drawing](draw/perfect-foresight.svg)
 
+- With perfect foresight / hindsight we simply look at the future payoffs we can generate on each path and compute the continuation value from that
+- Exercising on this basis gives perfect decisions in hindsight
+- This is approach is wrong as it looks into the future; my call right would we over-valued
+
 ???
 
 - Let's first discuss an approach that does not work
@@ -362,10 +366,11 @@ Obtaining the exercise value is simple: just plug the underlying value (stock pr
 
 # Approximation of Continuation Value
 
---- 
-.center[Timeline chart with multiple paths goes here]
 
---- 
+![drawing](draw/continuation-value-approximation.svg)
+
+- We approximate the continuation value by using all future path information and fit a function to it
+- This "averages out" the individual information on every path that we may not use
 
 ---
 
