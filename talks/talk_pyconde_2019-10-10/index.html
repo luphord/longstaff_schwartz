@@ -39,6 +39,21 @@
         width:auto;
       }
 
+      img[alt=americanoption] {
+        margin-top: 10px;
+        max-width:70%;
+        height: auto;
+        width:auto;
+      }
+
+      img[alt=americanoptionpremium] {
+        margin-top: 10px;
+        margin-left: 20%;
+        max-width: 70%;
+        height: auto;
+        width:auto;
+      }
+
       img[alt=coinintable] {
         height: 60px;
         width: 60px;
@@ -203,21 +218,17 @@ name: agenda
 ---
 
 # What is a Call Right?
-## Contract on Coin Value: American Put Option
+## We enter a Contract on the  Coin Value
 
-We enter a contract:
-- I can pick any date within the next five years where you have to pay me the difference between the 680€ and the current price; e.g. if the value of the coin was 610€, you would pay me 680€ - 610€ = 70€
-- I can only pick a date once, but I can choose any day within the five years
-- This is called a call right or exercise right
+I can pick any date within the next five years where you have to pay me the difference between the 680€ and the current price; e.g. if the value of the coin was 610€, you would pay me 680€ - 610€ = 70€
+![americanoption](draw/american-option-contract.svg)
+
+- I can only pick a date once, but I can choose any day within the next five years
+- I now have a call right or exercise right
 - This specific contract is called an American Put Option
-- How much should I pay / should you charge me for this contract?
-- When should I exercise the option (which date should I choose)?
+- You can only loose in the future, so you will request a premium
 
---- 
-.center[Cashflow graphic with person icons and arrows goes here]
-
---- 
-
+![americanoptionpremium](draw/american-option-premium.svg)
 
 ---
 
@@ -258,6 +269,8 @@ max(680€ - x, 0)
 
 - Whenever the coin value drops below 680€, I have to decide whether to exercise the option or hold and wait
 - As long as the coin value is above 680€, I will hold
+- How much should I pay / should you charge me for this contract?
+- When should I exercise the option (which date should I choose)?
 
 ---
 
