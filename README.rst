@@ -6,8 +6,8 @@ Longstaff-Schwartz Algorithm
 .. image:: https://img.shields.io/pypi/v/longstaff_schwartz.svg
         :target: https://pypi.python.org/pypi/longstaff_schwartz
 
-.. image:: https://img.shields.io/travis/luphord/longstaff_schwartz.svg
-        :target: https://travis-ci.org/luphord/longstaff_schwartz
+.. image:: https://travis-ci.com/luphord/longstaff_schwartz.svg
+        :target: https://travis-ci.com/luphord/longstaff_schwartz
 
 .. image:: https://readthedocs.org/projects/longstaff-schwartz/badge/?version=latest
         :target: https://longstaff-schwartz.readthedocs.io/en/latest/?badge=latest
