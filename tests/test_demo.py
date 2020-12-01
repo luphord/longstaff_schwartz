@@ -13,7 +13,7 @@ class TestDemo(unittest.TestCase):
         t = np.linspace(0, 5, 100)  # timegrid for simulation
         r = 0.01  # riskless rate
         sigma = 0.15  # annual volatility of underlying
-        n = 50  # number of simulated paths
+        n = 100  # number of simulated paths
 
         # Simulate the underlying
         gbm = GeometricBrownianMotion(mu=r, sigma=sigma)
@@ -47,6 +47,6 @@ class TestDemo(unittest.TestCase):
         npv_european = constant_rate_df(t[0], t[-1]) * put_payoff(x[-1]).mean()
 
         # Check results
-        assert np.round(npv_american, 4) == 0.0702
-        assert np.round(npv_european, 4) == 0.0598
+        assert np.round(npv_american, 4) == 0.0734
+        assert np.round(npv_european, 4) == 0.0626
         assert npv_american > npv_european
