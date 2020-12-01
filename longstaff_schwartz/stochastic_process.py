@@ -6,7 +6,7 @@ from scipy.stats.distributions import norm, lognorm, rv_frozen
 
 class BrownianMotion:
     '''Brownian Motion (Wiener Process) with optional drift.'''
-    def __init__(self, mu: float=0.0, sigma: float=1.0):
+    def __init__(self, mu: float = 0.0, sigma: float = 1.0):
         self.mu = mu
         self.sigma = sigma
 
@@ -27,7 +27,7 @@ class BrownianMotion:
 
 class GeometricBrownianMotion:
     '''Geometric Brownian Motion.(with optional drift).'''
-    def __init__(self, mu: float=0.0, sigma: float=1.0):
+    def __init__(self, mu: float = 0.0, sigma: float = 1.0):
         self.mu = mu
         self.sigma = sigma
 
