@@ -2,7 +2,7 @@
 History
 =======
 
-0.1.1(2020-12-01)
+0.1.1 (2020-12-01)
 
 * Support Python 3.8
 * Migrate to travis-ci.com
