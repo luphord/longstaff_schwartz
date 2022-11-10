@@ -2,14 +2,21 @@ import unittest
 
 import numpy as np
 
-from longstaff_schwartz.binomial import BinomialModel, create_binomial_model, \
-    call_payoff, european_call_price, european_put_price, american_call_price,\
-    american_put_price, american_put_exercise_barrier, \
-    american_put_exercise_barrier_fitted
+from longstaff_schwartz.binomial import (
+    BinomialModel,
+    create_binomial_model,
+    call_payoff,
+    european_call_price,
+    european_put_price,
+    american_call_price,
+    american_put_price,
+    american_put_exercise_barrier,
+    american_put_exercise_barrier_fitted,
+)
 
 
 class TestBinomial(unittest.TestCase):
-    '''Tests for `binomial` package.'''
+    """Tests for `binomial` package."""
 
     def test_european_call_price_decrease_with_strike(self):
         mdl = create_binomial_model(0.1, 0.02, 100, 1, n=100)
@@ -21,9 +28,9 @@ class TestBinomial(unittest.TestCase):
             last = current
 
     def test_thayer_watkins_example(self):
-        '''Test example values by Thayer Watkins in
-           http://www.sjsu.edu/faculty/watkins/binomial.htm
-        '''
+        """Test example values by Thayer Watkins in
+        http://www.sjsu.edu/faculty/watkins/binomial.htm
+        """
         u = 1 + 0.1
         d = 1 - 0.1
         r = np.log(1 + 0.05)  # = 0.05 with discrete compounding
@@ -36,9 +43,9 @@ class TestBinomial(unittest.TestCase):
         self.assertEqual(10.71, np.round(npv, 2))
 
     def test_cox_ross_rubinstein_example(self):
-        '''Test example values by Cox, Ross, Rubinstein in
-           "Option pricing: A simplified approach", chapter 4
-        '''
+        """Test example values by Cox, Ross, Rubinstein in
+        "Option pricing: A simplified approach", chapter 4
+        """
         S0 = 80
         n = 3
         T = 3
@@ -62,10 +69,11 @@ class TestBinomial(unittest.TestCase):
                 for S0 in [50, 100, 5000]:
                     mdl = create_binomial_model(0.1, 0.02, 100, 1, n=100)
                     for strike in [80, 90, 100, 110, 120]:
-                        expected.append(mdl.S0 -
-                                        strike * np.exp(-mdl.r * mdl.T))
-                        actual.append(european_call_price(mdl, strike) -
-                                      european_put_price(mdl, strike))
+                        expected.append(mdl.S0 - strike * np.exp(-mdl.r * mdl.T))
+                        actual.append(
+                            european_call_price(mdl, strike)
+                            - european_put_price(mdl, strike)
+                        )
         self.assertTrue(np.allclose(expected, actual))
 
     def test_american_european_call_equality(self):
@@ -97,10 +105,10 @@ class TestBinomial(unittest.TestCase):
         self.assertGreater((aamerican - aeuropean).max(), 1.23)
 
     def test_ucsd_example(self):
-        '''Test American put example data found in
-           https://www.math.ucsd.edu/~p1tong/ProgramForFun/
-           Binomial%20Tree%20model%20for%20an%20American%20Put%20option.xls
-        '''
+        """Test American put example data found in
+        https://www.math.ucsd.edu/~p1tong/ProgramForFun/
+        Binomial%20Tree%20model%20for%20an%20American%20Put%20option.xls
+        """
         S0 = 50
         n = 5
         T = 0.4167
@@ -112,7 +120,7 @@ class TestBinomial(unittest.TestCase):
         self.assertAlmostEqual(4.48859919382338, npv)
 
     def test_deep_itm_american_out(self):
-        '''Test a deep in the money american out option.'''
+        """Test a deep in the money american out option."""
         S0 = 100
         n = 5
         T = 5
@@ -124,7 +132,7 @@ class TestBinomial(unittest.TestCase):
         self.assertAlmostEqual(strike - S0, npv)
 
     def test_american_exercise_barrier(self):
-        '''Test exercise barrier of american out option.'''
+        """Test exercise barrier of american out option."""
         S0 = 100
         n = 100
         T = 5
@@ -146,7 +154,7 @@ class TestBinomial(unittest.TestCase):
                 last_odd = s
 
     def test_american_exercise_barrier_fitted(self):
-        '''Test fitted exercise barrier of american out option.'''
+        """Test fitted exercise barrier of american out option."""
         S0 = 100
         n = 100
         T = 5

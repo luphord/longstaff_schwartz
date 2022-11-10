@@ -9,7 +9,7 @@ class RegressionBasis:
         self.basis_functions = basis_functions
 
     def __str__(self):
-        return ' + '.join(str(f) for f in self.basis_functions)
+        return " + ".join(str(f) for f in self.basis_functions)
 
     def apply(self, x):
         for f in self.basis_functions:
@@ -45,14 +45,13 @@ class PolynomialRegressionFunction:
         self.exponent = exponent
 
     def __str__(self):
-        return f'x**{self.exponent}'
+        return f"x**{self.exponent}"
 
     def __call__(self, x):
-        return x ** self.exponent
+        return x**self.exponent
 
 
 class PolynomialRegressionBasis(RegressionBasis):
     def __init__(self, degree):
-        super().__init__([PolynomialRegressionFunction(i)
-                          for i in range(degree + 1)])
+        super().__init__([PolynomialRegressionFunction(i) for i in range(degree + 1)])
         self.degree = degree

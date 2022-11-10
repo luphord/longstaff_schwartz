@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-'''Tests for regression basis.'''
+"""Tests for regression basis."""
 
 import unittest
 import numpy as np
@@ -10,17 +10,17 @@ from longstaff_schwartz.regression_basis import PolynomialRegressionBasis
 
 
 class TestRegressionBasis(unittest.TestCase):
-    '''Tests for regression basis.'''
+    """Tests for regression basis."""
 
     def test_polynomial_components(self):
-        '''Test polynomial components.'''
+        """Test polynomial components."""
         for n in range(10):
             regr = PolynomialRegressionBasis(n)
             self.assertEqual(len(regr.basis_functions), n + 1)
 
     def test_np_polynomial_api_compatibility(self):
-        x = np.array([0., 1., 2., 3., 4., 5., 6., 7., 8., 9., 10.])
-        y = np.array([0., -1., -1.4, -1.6, -1.2, -0.5, .9, 1.6, 2.1, 2.2, 2.3])
+        x = np.array([0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0])
+        y = np.array([0.0, -1.0, -1.4, -1.6, -1.2, -0.5, 0.9, 1.6, 2.1, 2.2, 2.3])
         p = Polynomial.fit(x, y, 4)
         r = PolynomialRegressionBasis(4).fit(x, y)
         self.assertTrue(np.allclose(p(x), r(x)))

@@ -3,8 +3,8 @@ from numpy.polynomial import Polynomial
 
 
 class BinomialModel:
-    '''Simple implementation of Binomial Model (Cox, Ross, Rubinstein 1979)
-       for testing purposes.'''
+    """Simple implementation of Binomial Model (Cox, Ross, Rubinstein 1979)
+    for testing purposes."""
 
     def __init__(self, u, d, r, S0, T, n):
         self.u = u
@@ -13,12 +13,14 @@ class BinomialModel:
         self.S0 = S0
         self.T = T
         self.n = n
-        self.ST = np.array(list(self.terminal()), dtype='float64')
+        self.ST = np.array(list(self.terminal()), dtype="float64")
 
     def __repr__(self):
-        return type(self).__name__ + \
-            '(u={u}, d={d}, r={r}, S0={S0}, T={T}, n={n})' \
-            .format_map(vars(self))
+        return type(
+            self
+        ).__name__ + "(u={u}, d={d}, r={r}, S0={S0}, T={T}, n={n})".format_map(
+            vars(self)
+        )
 
     @property
     def dt(self):
@@ -26,18 +28,18 @@ class BinomialModel:
 
     @property
     def q(self):
-        return (np.exp(self.r*self.dt) - self.d) / (self.u - self.d)
+        return (np.exp(self.r * self.dt) - self.d) / (self.u - self.d)
 
     def terminal(self):
         S0, u, d, n = self.S0, self.u, self.d, self.n
-        for ups in range(n+1):
-            yield S0 * u**ups * d**(n-ups)
+        for ups in range(n + 1):
+            yield S0 * u**ups * d ** (n - ups)
 
     def evaluate(self, payoff):
         v = payoff(self.ST)
         q = self.q
         while len(v) > 1:
-            v = v[1:]*q + v[:-1]*(1-q)
+            v = v[1:] * q + v[:-1] * (1 - q)
         return v[0] * np.exp(-self.r * self.T)
 
     def evaluate_american_exercisable_iter(self, payoff):
@@ -46,8 +48,8 @@ class BinomialModel:
         spot = self.ST
         q = self.q
         while len(continuation) > 1:
-            continuation = df * (continuation[1:]*q + continuation[:-1]*(1-q))
-            spot = df * (spot[1:]*q + spot[:-1]*(1-q))
+            continuation = df * (continuation[1:] * q + continuation[:-1] * (1 - q))
+            spot = df * (spot[1:] * q + spot[:-1] * (1 - q))
             exercise = payoff(spot)
             optimal = np.maximum(continuation, exercise)
             yield continuation, spot, exercise, optimal
@@ -61,7 +63,7 @@ class BinomialModel:
 
 def create_binomial_model(sigma, r, S0, T, n=10):
     u = np.exp(sigma * np.sqrt(T / n))
-    return BinomialModel(u, 1/u, r, S0, T, n)
+    return BinomialModel(u, 1 / u, r, S0, T, n)
 
 
 def call_payoff(strike):

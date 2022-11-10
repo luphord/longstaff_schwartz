@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 
-'''Command Line Interface (CLI) for longstaff_schwartz.'''
+"""Command Line Interface (CLI) for longstaff_schwartz."""
 import sys
 import click
 
 
 @click.command()
 def main(args=None):
-    '''Command Line Interface (CLI) for longstaff_schwartz.'''
-    click.echo('No CLI functionality yet')
+    """Command Line Interface (CLI) for longstaff_schwartz."""
+    click.echo("No CLI functionality yet")
     return 0
 
 

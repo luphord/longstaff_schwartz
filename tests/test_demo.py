@@ -3,10 +3,9 @@ import unittest
 
 class TestDemo(unittest.TestCase):
     def test_readme_demo(self):
-        '''Test usage demo including imports'''
+        """Test usage demo including imports"""
         from longstaff_schwartz.algorithm import longstaff_schwartz
-        from longstaff_schwartz.stochastic_process \
-            import GeometricBrownianMotion
+        from longstaff_schwartz.stochastic_process import GeometricBrownianMotion
         import numpy as np
 
         # Model parameters
@@ -40,8 +39,9 @@ class TestDemo(unittest.TestCase):
             return payoff > 0
 
         # Run valuation of American put option
-        npv_american = longstaff_schwartz(x, t, constant_rate_df,
-                                          fit_quadratic, put_payoff, itm)
+        npv_american = longstaff_schwartz(
+            x, t, constant_rate_df, fit_quadratic, put_payoff, itm
+        )
 
         # European put option for comparison
         npv_european = constant_rate_df(t[0], t[-1]) * put_payoff(x[-1]).mean()
