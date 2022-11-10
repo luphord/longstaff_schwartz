@@ -55,6 +55,10 @@ type: ## run mypy type checks
 
 lint: ## check style with flake8
 	flake8 longstaff_schwartz tests
+	black --check .
+
+format: ## format code with black
+	black .
 
 test: ## run tests quickly with the default Python
 	python setup.py test
