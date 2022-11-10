@@ -2,8 +2,8 @@
 History
 =======
 
-0.2.0 (not yet)
----------------
+0.2.0 (2022-11-10)
+------------------
 
 * Drop support for Python 3.7
 * Add support for Python 3.9 and 3.10
