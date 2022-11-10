@@ -6,6 +6,7 @@ History
 ---------------
 
 * Drop support for Python 3.7
+* Migrate from travis-ci.com to GitHub actions
 
 0.1.1 (2020-12-01)
 ------------------
