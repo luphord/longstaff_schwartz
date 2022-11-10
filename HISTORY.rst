@@ -6,7 +6,7 @@ History
 ---------------
 
 * Drop support for Python 3.7
-* Add support for Python 3.9
+* Add support for Python 3.9 and 3.10
 * Upgrade dependencies
 * Reformat code with black
 * Migrate from travis-ci.com to GitHub actions
