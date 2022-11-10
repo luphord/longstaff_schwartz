@@ -12,11 +12,11 @@ with open("HISTORY.rst") as history_file:
     history = history_file.read()
 
 requirements = [
-    "Click>=6.0",
-    "numpy>=1.14",
-    "scipy>=1.2",
-    "matplotlib>=3.0",
-    "jupyter>=1.0",
+    "Click>=8.0",
+    "numpy>=1.22",
+    "scipy>=1.7",
+    "matplotlib>=3.5",
+    "jupyterlab>=3.5",
 ]
 
 setup_requirements = []
