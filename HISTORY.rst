@@ -9,6 +9,7 @@ History
 * Upgrade dependencies
 * Reformat code with black
 * Migrate from travis-ci.com to GitHub actions
+* Upgrade development status to alpha
 
 0.1.1 (2020-12-01)
 ------------------
