@@ -11,7 +11,7 @@ class BrownianMotion:
         self.mu = mu
         self.sigma = sigma
 
-    def simulate(self, t: np.array, n: int, rnd: np.random.RandomState) -> np.array:
+    def simulate(self, t: np.ndarray, n: int, rnd: np.random.RandomState) -> np.ndarray:
         assert t.ndim == 1, "One dimensional time vector required"
         assert t.size > 0, "At least one time point is required"
         dt = np.concatenate((t[0:1], np.diff(t)))
@@ -32,7 +32,7 @@ class GeometricBrownianMotion:
         self.mu = mu
         self.sigma = sigma
 
-    def simulate(self, t: np.array, n: int, rnd: np.random.RandomState) -> np.array:
+    def simulate(self, t: np.ndarray, n: int, rnd: np.random.RandomState) -> np.ndarray:
         assert t.ndim == 1, "One dimensional time vector required"
         assert t.size > 0, "At least one time point is required"
         dt = np.concatenate((t[0:1], np.diff(t)))
