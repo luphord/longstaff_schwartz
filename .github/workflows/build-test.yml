@@ -29,7 +29,6 @@ jobs:
         python -m pip install --upgrade pip
         python -m pip install .
         python -m pip install -r requirements_dev.txt
-        python -m pip install numpy==1.16.6
     - name: Typecheck with mypy
       run: |
         mypy --config-file mypy.ini longstaff_schwartz tests
