@@ -2,7 +2,13 @@
 History
 =======
 
+0.2.0 (not yet)
+---------------
+
+* Drop support for Python 3.7
+
 0.1.1 (2020-12-01)
+------------------
 
 * Support Python 3.8
 * Migrate to travis-ci.com
